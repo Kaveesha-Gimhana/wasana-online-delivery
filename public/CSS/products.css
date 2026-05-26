@@ -155,7 +155,7 @@
 }
 
 .banner-overlay h1{
-    font-size: 55px;
+    font-size: 40px;
     font-weight: bold;
 }
 
@@ -163,7 +163,11 @@
     max-width: 850px;
     font-size: 22px;
 }
-
+.banner-text{
+    background-color: rgba(255, 255, 255, 0.185);
+    border-radius: 30px;
+    padding: 10px;
+}
 /* ================= TOP BAR ================= */
 
 .top-bar{
@@ -185,7 +189,9 @@
 }
 
 /* ================= PRODUCT GRID ================= */
-
+.product-p{
+    font-size: 15px !important;
+}
 .product-grid{
     display: grid;
     grid-template-columns: repeat(5,1fr);
@@ -217,12 +223,12 @@
 .product-card h3{
     color: white;
     margin-top: 20px;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .product-card p{
     color: #d6d6d6;
-    font-size: 28px;
+    font-size: 15px;
 }
 
 /* ================= RESPONSIVE ================= */

@@ -126,29 +126,18 @@
             <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1400&auto=format&fit=crop">
 
             <div class="banner-overlay">
-                <h1>All Products</h1>
+                <div class="banner-text">
+                    <h2>All Products</h2>
 
-                <p>
-                    Wasana Cakes are freshly baked, soft, and flavorful
-                    ranging from Birthday, Anniversary, Christmas,
-                    New Year, Valentine’s, to iced varieties crafted
-                    with premium ingredients for every celebration
-                    and joyful moment.
-                </p>
+                    <p class="product-p">
+                        Wasana Cakes are freshly baked, soft, and flavorful
+                        ranging from Birthday, Anniversary, Christmas,
+                        New Year, Valentine’s, to iced varieties crafted
+                        with premium ingredients for every celebration
+                        and joyful moment.
+                    </p>
+                </div>
             </div>
-
-        </div>
-
-        <!-- Top Bar -->
-        <div class="top-bar">
-
-            <p>332 products</p>
-
-            <select>
-                <option>Sort by: Recommended</option>
-                <option>Price Low to High</option>
-                <option>Price High to Low</option>
-            </select>
 
         </div>
 
