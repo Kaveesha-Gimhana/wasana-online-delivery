@@ -21,64 +21,62 @@
 <body class="antialiased">
     <!-- Navbar Section Start -->
     <nav class="navbar navbar-expand-lg custom-navbar sticky-top">
-        <div class="container">
+    <div class="container-fluid px-4">
 
-            <!-- Logo + Brand -->
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="{{ asset('images/nav-logo.png') }}" alt="logo" class="logo">
-                <div class="ms-2">
-                    <h5 class="mb-0 text-white">Wasana Bakers</h5>
-                    <small class="text-light">Online Cake Delivery</small>
-                </div>
-            </a>
-
-            <!-- Toggle Button -->
-            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                ☰
-            </button>
-
-            <!-- Menu -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center">
-
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ url('/All_Products') }}">Products</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Contact Us</a>
-                    </li>
-
-                    <!-- Order Button -->
-                    <li class="nav-item ms-3">
-                        <a class="btn order-btn" href="{{ url('/All_Products') }}">Order Now</a>
-                    </li>
-
-                    <!-- Login Icon -->
-                    <li class="nav-item ms-3 text-white">
-                        <button class="btn nav-btn-login"><i class="bi bi-person-circle"></i> Log In</button>
-                    </li>
-
-                    <!-- Cart -->
-                    <li class="nav-item ms-3 text-white">
-                        <button type="button" class="btn position-relative nav-cart-btn">
-                            <i class="bi bi-cart4"></i>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-                                99+
-                                <span class="visually-hidden">unread messages</span>
-                            </span>
-                        </button>
-                    </li>
-
-                </ul>
+        <!-- Logo + Brand -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="{{ asset('images/nav-logo.png') }}" alt="logo" class="logo">
+            <div class="ms-2">
+                <h5 class="mb-0">Wasana Bakers</h5>
+                <small>Online Cake Delivery</small>
             </div>
+        </a>
 
+        <!-- Toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            ☰
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav align-items-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/All_Products') }}">Products</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+
+                <li class="nav-item ms-3">
+                    <a class="btn order-btn" href="{{ url('/All_Products') }}">Order Now</a>
+                </li>
+
+                <li class="nav-item ms-3">
+                    <button class="btn nav-btn-login">
+                        <i class="bi bi-person-circle"></i> Log In
+                    </button>
+                </li>
+
+                <li class="nav-item ms-3">
+                    <button class="btn position-relative nav-cart-btn">
+                        <i class="bi bi-cart4"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                            99+
+                        </span>
+                    </button>
+                </li>
+
+            </ul>
         </div>
-    </nav>
+
+    </div>
+</nav>
     <!-- Navbar Section End -->
     <!-- Carosel Section Start -->
     <div class="container-fluid carosel-main pt-5 pb-5">
@@ -102,105 +100,90 @@
     </div>
     <!-- Carosel Section End -->
     <!-- Card Slider Section Start -->
-    <div class="carosel-bg">
-        <div class="container py-5">
+   <div class="carosel-bg">
+    <div class="container-fluid py-5 px-3">
 
-            <!-- <h2 class="text-center slide-title mb-4">Our Cakes</h2> -->
+        <div class="slider-container">
 
-            <div class="slider-container mx-auto">
+            <div id="sliderWrapper" class="slider-wrapper">
 
-                <div id="sliderWrapper" class="slider-wrapper">
-
-                    <!-- CARD 1 -->
-                    <div class="card card-slider">
-                        <img src="{{ asset('images/birthday_cake.jpg') }}" class="card-img-top">
-                        <div class="card-body">
-                            <center>
-                                <h5>Birthday Cake</h5>
-                                <p>Delicious fresh chocolate cake.</p>
-                                <Button class="btn btn-danger card-slider-btn">Oder Now</Button>
-                            </center>
-                        </div>
+                <!-- CARD 1 -->
+                <div class="card card-slider">
+                    <img src="{{ asset('images/birthday_cake.jpg') }}" class="card-img-top">
+                    <div class="card-body text-center">
+                        <h5>Birthday Cake</h5>
+                        <p>Delicious fresh chocolate cake.</p>
+                        <button class="btn card-slider-btn">Order Now</button>
                     </div>
-
-                    <!-- CARD 2 -->
-                    <div class="card card-slider">
-                        <img src="{{ asset('images/anniversary_cake.jpg') }}" class="card-img-top">
-                        <center>
-                            <div class="card-body">
-                                <h5>Anniversary Cake</h5>
-                                <p>Soft and creamy vanilla flavor.</p>
-                                <Button class="btn btn-danger card-slider-btn">Oder Now</Button>
-                            </div>
-                        </center>
-                    </div>
-
-                    <!-- CARD 3 -->
-                    <div class="card card-slider">
-                        <img src="https://picsum.photos/id/251/600/400" class="card-img-top">
-                        <center>
-                            <div class="card-body">
-                                <h5>Valentine's Cake</h5>
-                                <p>Fresh strawberry cream cake.</p>
-                                <Button class="btn btn-danger card-slider-btn">Oder Now</Button>
-                            </div>
-                        </center>
-                    </div>
-
-                    <!-- CARD 4 -->
-                    <div class="card card-slider">
-                        <img src="{{ asset('images/christmas_cake.jpg') }}" class="card-img-top">
-                        <center>
-                            <div class="card-body">
-                                <h5>Christmas Cake</h5>
-                                <p>Elegant wedding special cake.</p>
-                                <Button class="btn btn-danger card-slider-btn">Oder Now</Button>
-                            </div>
-                        </center>
-                    </div>
-
-                    <!-- CARD 5 -->
-                    <div class="card card-slider">
-                        <img src="https://picsum.photos/id/1016/600/400" class="card-img-top">
-                        <center>
-                            <div class="card-body">
-                                <h5>Gateau Cake</h5>
-                                <p>Healthy mixed fruit cake.</p>
-                                <Button class="btn btn-danger card-slider-btn">Oder Now</Button>
-                            </div>
-                        </center>
-                    </div>
-
-                    <!-- CARD 6 -->
-                     <div class="card card-slider">
-                        <img src="https://picsum.photos/id/1016/600/400" class="card-img-top">
-                        <center>
-                            <div class="card-body">
-                                <h5>Bento Cake</h5>
-                                <p>Healthy mixed fruit cake.</p>
-                                <Button class="btn btn-danger card-slider-btn">Oder Now</Button>
-                            </div>
-                        </center>
-                    </div>
-
                 </div>
 
-                <!-- Buttons -->
-                <button id="prevBtn" class="nav-btn left">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
+                <!-- CARD 2 -->
+                <div class="card card-slider">
+                    <img src="{{ asset('images/anniversary_cake.jpg') }}" class="card-img-top">
+                    <div class="card-body text-center">
+                        <h5>Anniversary Cake</h5>
+                        <p>Soft and creamy vanilla flavor.</p>
+                        <button class="btn card-slider-btn">Order Now</button>
+                    </div>
+                </div>
 
-                <button id="nextBtn" class="nav-btn right">
-                    <i class="bi bi-chevron-right"></i>
-                </button>
+                <!-- CARD 3 -->
+                <div class="card card-slider">
+                    <img src="https://picsum.photos/id/251/600/400" class="card-img-top">
+                    <div class="card-body text-center">
+                        <h5>Valentine Cake</h5>
+                        <p>Fresh strawberry cream cake.</p>
+                        <button class="btn card-slider-btn">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="card card-slider">
+                    <img src="{{ asset('images/christmas_cake.jpg') }}" class="card-img-top">
+                    <div class="card-body text-center">
+                        <h5>Christmas Cake</h5>
+                        <p>Special festive cake.</p>
+                        <button class="btn card-slider-btn">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="card card-slider">
+                    <img src="https://picsum.photos/id/1016/600/400" class="card-img-top">
+                    <div class="card-body text-center">
+                        <h5>Gateau Cake</h5>
+                        <p>Premium layered cake.</p>
+                        <button class="btn card-slider-btn">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- CARD 6 -->
+                <div class="card card-slider">
+                    <img src="https://picsum.photos/id/1025/600/400" class="card-img-top">
+                    <div class="card-body text-center">
+                        <h5>Bento Cake</h5>
+                        <p>Mini cute cake.</p>
+                        <button class="btn card-slider-btn">Order Now</button>
+                    </div>
+                </div>
 
             </div>
 
-            <div id="dots" class="indicator-dots"></div>
+            <!-- NAV BUTTONS -->
+            <button id="prevBtn" class="nav-btn left">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+
+            <button id="nextBtn" class="nav-btn right">
+                <i class="bi bi-chevron-right"></i>
+            </button>
 
         </div>
-        <!-- Card Slider Section End -->
+
+        <div id="dots" class="indicator-dots"></div>
+
     </div>
+</div>
     <!-- Card Slider Section Start -->
     <!-- About Section Start -->
     <!-- <div>
@@ -279,9 +262,9 @@
                         </div>
 
                         <!-- Button -->
-                        <a href="#" class="btn btn-primary about-btn mt-4">
+                        <!-- <a href="#" class="btn btn-primary about-btn mt-4">
                             Learn More
-                        </a>
+                        </a> -->
 
                     </div>
 
