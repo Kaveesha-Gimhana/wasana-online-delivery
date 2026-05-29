@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('All_Products', function (){
-    return view('allProduct');
+    return view('allProduct'); 
+});
+Route::get('singal_view', function(){
+    return view('singalProdct');
 });
 
 Route::get('loginAddmin', function(){
