@@ -146,7 +146,7 @@
             <!-- Copy this card 30 times -->
 
             <div class="product-card">
-                <a href="{{ url('/') }}" class="product-card-link">
+                <a href="{{ url('singal_view') }}" class="product-card-link">
                     <img src="{{ asset('images/G 09.jpg') }}">
                     <h3 class="">P 01</h3>
                     <p>LKR 3,000.00</p>
