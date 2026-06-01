@@ -436,3 +436,446 @@
 * {
     -ms-overflow-style: none;
 }
+
+/* singal product view Section start */ 
+/* .singal-prodct-card{
+    background-color: red !important;
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+.singal-prodct-div{
+    padding: 10px !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.cart-btn{
+    background-color: #ff5722 !important;
+    color: white !important;
+    border: 1px solid #ff5722 !important;
+    border-radius: 30px !important;
+    width: 300px !important;
+}
+.cart-btn:hover{
+    background-color: #11182700 !important;
+    color: #ff5722 !important;
+}
+.buy-btn{
+    background-color: #111827 !important;
+    color: white !important;
+    border: 1px solid #111827 !important;
+    border-radius: 30px !important;
+    width: 300px !important;
+}
+.buy-btn:hover{
+    background-color: #11182700 !important;
+    color: #111827 !important;
+}
+.infomation-div{
+    background-color: rgba(128, 128, 128, 0.864);
+    border-radius: 30px;
+    width: 300px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-infomation{
+    color: white !important;
+    font-size: 30px !important;
+    border: 0px !important;
+}
+.btn-infomation:hover{
+    font-size: 32px !important;
+} */
+/* Singal product view Section End */
+
+
+/* ===================================
+   WASANA SINGLE PRODUCT SECTION
+=================================== */
+
+
+
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+html,
+body{
+    width:100% !important;
+    overflow-x:hidden !important;
+}
+
+/* =========================================
+   PRODUCT WRAPPER
+========================================= */
+
+.wb-single-product{
+    background:#1e293b !important;
+    border-radius:25px !important;
+
+    width:95% !important;
+    max-width:1400px !important;
+
+    margin:40px auto !important;
+    padding:35px !important;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25) !important;
+
+    overflow:hidden !important;
+}
+
+/* =========================================
+   IMAGE SECTION
+========================================= */
+
+.wb-product-image-box{
+    width:100% !important;
+    overflow:hidden !important;
+    border-radius:20px !important;
+}
+
+.wb-product-image{
+    width:100% !important;
+
+    min-height:550px !important;
+    max-height:650px !important;
+
+    object-fit:cover !important;
+
+    border-radius:20px !important;
+
+    display:block !important;
+}
+
+/* =========================================
+   DETAILS
+========================================= */
+
+.wb-product-details{
+    width:100% !important;
+    overflow:hidden !important;
+}
+
+.wb-product-title{
+    color:#ffffff !important;
+
+    font-size:2rem !important;
+    font-weight:700 !important;
+
+    margin-bottom:10px !important;
+}
+
+.wb-product-price{
+    color:#ff5722 !important;
+
+    font-size:1.8rem !important;
+    font-weight:700 !important;
+
+    margin-bottom:25px !important;
+}
+
+.wb-label{
+    color:#ffffff !important;
+
+    font-size:15px !important;
+    font-weight:600 !important;
+
+    margin-bottom:8px !important;
+
+    display:block !important;
+}
+
+/* =========================================
+   SELECT
+========================================= */
+
+.wb-product-select{
+    border-radius:12px !important;
+
+    padding:12px !important;
+
+    min-height:50px !important;
+
+    border:none !important;
+}
+
+/* =========================================
+   QUANTITY
+========================================= */
+
+.wb-qty-wrapper{
+    display:flex !important;
+    align-items:center !important;
+
+    gap:12px !important;
+}
+
+#wbQty{
+    width:80px !important;
+    height:45px !important;
+
+    border:none !important;
+    border-radius:10px !important;
+
+    text-align:center !important;
+
+    font-size:18px !important;
+    font-weight:700 !important;
+}
+
+.wb-qty-btn{
+    width:45px !important;
+    height:45px !important;
+
+    border:none !important;
+    border-radius:10px !important;
+
+    background:#ff5722 !important;
+    color:#ffffff !important;
+
+    font-size:22px !important;
+    font-weight:bold !important;
+
+    transition:.3s !important;
+}
+
+.wb-qty-btn:hover{
+    background:#e64a19 !important;
+
+    transform:scale(1.05) !important;
+}
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.wb-description-box{
+    background:rgba(255,255,255,.05) !important;
+
+    border-radius:15px !important;
+
+    padding:20px !important;
+
+    margin-bottom:25px !important;
+}
+
+.wb-description-box h5{
+    color:#ffffff !important;
+
+    margin-bottom:10px !important;
+}
+
+.wb-description-box p{
+    color:#cbd5e1 !important;
+
+    line-height:1.8 !important;
+
+    margin-bottom:0 !important;
+
+    overflow-wrap:break-word !important;
+    word-break:break-word !important;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.wb-btn-group{
+    display:flex !important;
+
+    gap:15px !important;
+
+    flex-wrap:wrap !important;
+}
+
+.wb-cart-btn{
+    background:#ff5722 !important;
+    color:#ffffff !important;
+
+    border:none !important;
+    border-radius:50px !important;
+
+    padding:12px 30px !important;
+
+    font-weight:600 !important;
+
+    min-width:180px !important;
+
+    transition:.3s !important;
+}
+
+.wb-cart-btn:hover{
+    background:#e64a19 !important;
+}
+
+.wb-buy-btn{
+    background:#111827 !important;
+    color:#ffffff !important;
+
+    border:1px solid #374151 !important;
+
+    border-radius:50px !important;
+
+    padding:12px 30px !important;
+
+    font-weight:600 !important;
+
+    min-width:180px !important;
+
+    transition:.3s !important;
+}
+
+.wb-buy-btn:hover{
+    border-color:#ff5722 !important;
+
+    color:#ffffff !important;
+}
+
+/* =========================================
+   CONTACT BUTTONS
+========================================= */
+
+.wb-contact-group{
+    display:flex !important;
+
+    gap:15px !important;
+
+    margin-top:25px !important;
+}
+
+.wb-contact-btn{
+    width:55px !important;
+    height:55px !important;
+
+    border-radius:50% !important;
+
+    background:#ff5722 !important;
+
+    color:#ffffff !important;
+
+    text-decoration:none !important;
+
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    font-size:22px !important;
+
+    transition:.3s !important;
+}
+
+.wb-contact-btn:hover{
+    background:#e64a19 !important;
+
+    transform:translateY(-3px) !important;
+}
+
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media (min-width:992px){
+
+    .wb-single-product .row{
+        align-items:center !important;
+    }
+
+    .wb-product-details{
+        padding-left:20px !important;
+    }
+
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width:991px){
+
+    .wb-single-product{
+        padding:25px !important;
+    }
+
+    .wb-product-image{
+        min-height:400px !important;
+        max-height:450px !important;
+    }
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width:768px){
+
+    .wb-single-product{
+        width:100% !important;
+
+        margin:15px auto !important;
+
+        padding:15px !important;
+
+        border-radius:15px !important;
+    }
+
+    .wb-product-image{
+        min-height:250px !important;
+        max-height:300px !important;
+    }
+
+    .wb-product-title{
+        font-size:1.5rem !important;
+    }
+
+    .wb-product-price{
+        font-size:1.3rem !important;
+    }
+
+    .wb-btn-group{
+        flex-direction:column !important;
+    }
+
+    .wb-cart-btn,
+    .wb-buy-btn{
+        width:100% !important;
+    }
+
+    .wb-contact-group{
+        justify-content:center !important;
+    }
+
+}
+
+/* =========================================
+   EXTRA SMALL MOBILE
+========================================= */
+
+@media (max-width:480px){
+
+    .wb-product-title{
+        font-size:1.3rem !important;
+    }
+
+    .wb-product-price{
+        font-size:1.2rem !important;
+    }
+
+    .wb-qty-wrapper{
+        gap:8px !important;
+    }
+
+    #wbQty{
+        width:65px !important;
+    }
+
+    .wb-qty-btn{
+        width:40px !important;
+        height:40px !important;
+    }
+
+}
