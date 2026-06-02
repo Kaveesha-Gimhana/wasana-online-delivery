@@ -1,28 +1,55 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
+// 🏠 Public Routes
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('All_Products', function (){
-    return view('allProduct'); 
-});
-Route::get('singal_view', function(){
-    return view('singalProdct');
-});
 
-Route::get('loginAddmin', function(){
-    return view('login');
+Route::get('/all-products', function () {
+    return view('allProduct');
+})->name('products');
+
+Route::get('/single-view', function () {
+    return view('singalProdct');
+})->name('single.product');
+
+
+// 🔐 ADMIN AUTH ROUTES (NO LOGIN = ALLOWED ONLY HERE)
+/* Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('admin.login');
+Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
+
+
+// 🔒 PROTECTED ADMIN ROUTES (IMPORTANT FIX)
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])
+        ->name('admin.dashboard');
+
+    Route::post('/logout', [AdminController::class, 'logout'])
+        ->name('admin.logout');
+
+}); */
+
+// LOGIN (public)
+Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('admin.login');
+Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
+
+
+// PROTECTED ADMIN AREA
+Route::prefix('admin')->middleware(['admin'])->group(function () {
+
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])
+        ->name('admin.dashboard');
+
+    Route::post('/logout', [AdminController::class, 'logout'])
+        ->name('admin.logout');
 });
