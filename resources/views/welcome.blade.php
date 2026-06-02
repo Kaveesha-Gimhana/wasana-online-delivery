@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/overoll_user.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
@@ -21,62 +22,69 @@
 <body class="antialiased">
     <!-- Navbar Section Start -->
     <nav class="navbar navbar-expand-lg custom-navbar sticky-top">
-    <div class="container-fluid px-4">
+        <div class="container-fluid px-4">
 
-        <!-- Logo + Brand -->
-        <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="{{ asset('images/nav-logo.png') }}" alt="logo" class="logo">
-            <div class="ms-2">
-                <h5 class="mb-0">Wasana Bakers</h5>
-                <small>Online Cake Delivery</small>
-            </div>
-        </a>
+            <!-- Logo + Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="{{ asset('images/nav-logo.png') }}" alt="logo" class="logo">
+                <div class="ms-2">
+                    <h5 class="mb-0">Wasana Bakers</h5>
+                    <small>Online Cake Delivery</small>
+                </div>
+            </a>
 
-        <!-- Toggle -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            ☰
-        </button>
+            <!-- Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                ☰
+            </button>
 
-        <!-- Menu -->
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav align-items-center">
+            <!-- Menu -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/') }}">Home</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">Home</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/All_Products') }}">Products</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/All_Products') }}">Products</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
 
-                <li class="nav-item ms-3">
-                    <a class="btn order-btn" href="{{ url('/All_Products') }}">Order Now</a>
-                </li>
+                    <li class="nav-item ms-3">
+                        <a class="btn order-btn" href="{{ url('/All_Products') }}">Order Now</a>
+                    </li>
 
-                <li class="nav-item ms-3">
-                    <button class="btn nav-btn-login">
-                        <i class="bi bi-person-circle"></i> Log In
-                    </button>
-                </li>
+                    <li class="nav-item ms-3">
+                        <button class="btn nav-btn-login">
+                            <i class="bi bi-person-circle"></i> Log In
+                        </button>
+                    </li>
 
-                <li class="nav-item ms-3">
-                    <button class="btn position-relative nav-cart-btn">
+                    <li class="nav-item ms-3">
+                        <!-- <button class="btn position-relative nav-cart-btn">
                         <i class="bi bi-cart4"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
                             99+
                         </span>
-                    </button>
-                </li>
+                    </button> -->
+                        <button class="btn position-relative nav-cart-btn" id="cartBtn">
+                            <i class="bi bi-cart4"></i>
 
-            </ul>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                                3
+                            </span>
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+
         </div>
-
-    </div>
-</nav>
+    </nav>
     <!-- Navbar Section End -->
     <!-- Carosel Section Start -->
     <div class="container-fluid carosel-main pt-5 pb-5">
@@ -100,90 +108,90 @@
     </div>
     <!-- Carosel Section End -->
     <!-- Card Slider Section Start -->
-   <div class="carosel-bg">
-    <div class="container-fluid py-5 px-3">
+    <div class="carosel-bg">
+        <div class="container-fluid py-5 px-3">
 
-        <div class="slider-container">
+            <div class="slider-container">
 
-            <div id="sliderWrapper" class="slider-wrapper">
+                <div id="sliderWrapper" class="slider-wrapper">
 
-                <!-- CARD 1 -->
-                <div class="card card-slider">
-                    <img src="{{ asset('images/birthday_cake.jpg') }}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <h5>Birthday Cake</h5>
-                        <p>Delicious fresh chocolate cake.</p>
-                        <button class="btn card-slider-btn">Order Now</button>
+                    <!-- CARD 1 -->
+                    <div class="card card-slider">
+                        <img src="{{ asset('images/birthday_cake.jpg') }}" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5>Birthday Cake</h5>
+                            <p>Delicious fresh chocolate cake.</p>
+                            <button class="btn card-slider-btn">Order Now</button>
+                        </div>
                     </div>
+
+                    <!-- CARD 2 -->
+                    <div class="card card-slider">
+                        <img src="{{ asset('images/anniversary_cake.jpg') }}" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5>Anniversary Cake</h5>
+                            <p>Soft and creamy vanilla flavor.</p>
+                            <button class="btn card-slider-btn">Order Now</button>
+                        </div>
+                    </div>
+
+                    <!-- CARD 3 -->
+                    <div class="card card-slider">
+                        <img src="https://picsum.photos/id/251/600/400" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5>Valentine Cake</h5>
+                            <p>Fresh strawberry cream cake.</p>
+                            <button class="btn card-slider-btn">Order Now</button>
+                        </div>
+                    </div>
+
+                    <!-- CARD 4 -->
+                    <div class="card card-slider">
+                        <img src="{{ asset('images/christmas_cake.jpg') }}" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5>Christmas Cake</h5>
+                            <p>Special festive cake.</p>
+                            <button class="btn card-slider-btn">Order Now</button>
+                        </div>
+                    </div>
+
+                    <!-- CARD 5 -->
+                    <div class="card card-slider">
+                        <img src="https://picsum.photos/id/1016/600/400" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5>Gateau Cake</h5>
+                            <p>Premium layered cake.</p>
+                            <button class="btn card-slider-btn">Order Now</button>
+                        </div>
+                    </div>
+
+                    <!-- CARD 6 -->
+                    <div class="card card-slider">
+                        <img src="https://picsum.photos/id/1025/600/400" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5>Bento Cake</h5>
+                            <p>Mini cute cake.</p>
+                            <button class="btn card-slider-btn">Order Now</button>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- CARD 2 -->
-                <div class="card card-slider">
-                    <img src="{{ asset('images/anniversary_cake.jpg') }}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <h5>Anniversary Cake</h5>
-                        <p>Soft and creamy vanilla flavor.</p>
-                        <button class="btn card-slider-btn">Order Now</button>
-                    </div>
-                </div>
+                <!-- NAV BUTTONS -->
+                <button id="prevBtn" class="nav-btn left">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
 
-                <!-- CARD 3 -->
-                <div class="card card-slider">
-                    <img src="https://picsum.photos/id/251/600/400" class="card-img-top">
-                    <div class="card-body text-center">
-                        <h5>Valentine Cake</h5>
-                        <p>Fresh strawberry cream cake.</p>
-                        <button class="btn card-slider-btn">Order Now</button>
-                    </div>
-                </div>
-
-                <!-- CARD 4 -->
-                <div class="card card-slider">
-                    <img src="{{ asset('images/christmas_cake.jpg') }}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <h5>Christmas Cake</h5>
-                        <p>Special festive cake.</p>
-                        <button class="btn card-slider-btn">Order Now</button>
-                    </div>
-                </div>
-
-                <!-- CARD 5 -->
-                <div class="card card-slider">
-                    <img src="https://picsum.photos/id/1016/600/400" class="card-img-top">
-                    <div class="card-body text-center">
-                        <h5>Gateau Cake</h5>
-                        <p>Premium layered cake.</p>
-                        <button class="btn card-slider-btn">Order Now</button>
-                    </div>
-                </div>
-
-                <!-- CARD 6 -->
-                <div class="card card-slider">
-                    <img src="https://picsum.photos/id/1025/600/400" class="card-img-top">
-                    <div class="card-body text-center">
-                        <h5>Bento Cake</h5>
-                        <p>Mini cute cake.</p>
-                        <button class="btn card-slider-btn">Order Now</button>
-                    </div>
-                </div>
+                <button id="nextBtn" class="nav-btn right">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
 
             </div>
 
-            <!-- NAV BUTTONS -->
-            <button id="prevBtn" class="nav-btn left">
-                <i class="bi bi-chevron-left"></i>
-            </button>
-
-            <button id="nextBtn" class="nav-btn right">
-                <i class="bi bi-chevron-right"></i>
-            </button>
+            <div id="dots" class="indicator-dots"></div>
 
         </div>
-
-        <div id="dots" class="indicator-dots"></div>
-
     </div>
-</div>
     <!-- Card Slider Section Start -->
     <!-- About Section Start -->
     <!-- <div>
@@ -276,215 +284,141 @@
 
     </section>
     <!-- About Section End -->
-     <!-- Footer Start -->
-<footer class="footer-main pt-5 pb-3">
-    <div class="container">
-        <div class="row g-4">
+    <!-- Footer Start -->
+    <footer class="footer-main pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
 
-            <!-- Brand -->
-            <div class="col-md-4">
-                <h4 class="footer-logo">Wasana Bakers</h4>
-                <p class="footer-text">
-                    Fresh, delicious and custom-made cakes delivered to your doorstep with love and care.
-                </p>
-            </div>
-
-            <!-- Quick Links -->
-            <div class="col-md-2">
-                <h5 class="footer-title">Quick Links</h5>
-                <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="{{ url('/products') }}">Products</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-            </div>
-
-            <!-- Support -->
-            <div class="col-md-3">
-                <h5 class="footer-title">Support</h5>
-                <ul class="footer-links">
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Delivery Info</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact -->
-            <div class="col-md-3">
-                <h5 class="footer-title">Contact</h5>
-                <p class="footer-text">
-                    📍 Galle, Sri Lanka <br>
-                    📞 +94 77 123 4567 <br>
-                    ✉ info@wasana.lk
-                </p>
-
-                <!-- Social -->
-                <div class="social-icons">
-                    <a href="#"><i class="bi bi-facebook"></i></a>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                <!-- Brand -->
+                <div class="col-md-4">
+                    <h4 class="footer-logo">Wasana Bakers</h4>
+                    <p class="footer-text">
+                        Fresh, delicious and custom-made cakes delivered to your doorstep with love and care.
+                    </p>
                 </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-2">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="{{ url('/products') }}">Products</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="col-md-3">
+                    <h5 class="footer-title">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Delivery Info</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="col-md-3">
+                    <h5 class="footer-title">Contact</h5>
+                    <p class="footer-text">
+                        📍 Galle, Sri Lanka <br>
+                        📞 +94 77 123 4567 <br>
+                        ✉ info@wasana.lk
+                    </p>
+
+                    <!-- Social -->
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="footer-line">
+
+            <div class="text-center footer-bottom">
+                © 2026 Wasana Bakers | All Rights Reserved
+            </div>
+
+        </div>
+    </footer>
+    <!-- Footer End -->
+    <!-- Cart Popup Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+
+        <div class="cart-header">
+            <h5><i class="bi bi-cart3"></i> Shopping Cart</h5>
+            <button class="close-cart" id="closeCart">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+        <div class="cart-body">
+
+            <!-- Product -->
+            <div class="cart-item">
+                <img src="{{ asset('images/birthday_cake.jpg') }}" alt="cake">
+
+                <div class="cart-info">
+                    <h6>Chocolate Birthday Cake</h6>
+                    <p>Rs. 4,500</p>
+
+                    <div class="qty-box">
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </div>
+                </div>
+
+                <i class="bi bi-trash3 remove-btn"></i>
+            </div>
+
+            <!-- Product -->
+            <div class="cart-item">
+                <img src="{{ asset('images/christmas_cake.jpg') }}" alt="cake">
+
+                <div class="cart-info">
+                    <h6>Christmas Cake</h6>
+                    <p>Rs. 3,200</p>
+
+                    <div class="qty-box">
+                        <button>-</button>
+                        <span>2</span>
+                        <button>+</button>
+                    </div>
+                </div>
+
+                <i class="bi bi-trash3 remove-btn"></i>
             </div>
 
         </div>
 
-        <hr class="footer-line">
+        <div class="cart-footer">
 
-        <div class="text-center footer-bottom">
-            © 2026 Wasana Bakers | All Rights Reserved
+            <div class="subtotal">
+                <span>Total</span>
+                <strong>Rs. 10,900</strong>
+            </div>
+
+            <button class="checkout-btn">
+                Proceed To Checkout
+            </button>
+
         </div>
 
     </div>
-</footer>
-<!-- Footer End -->
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script>
-        const wrapper = document.getElementById("sliderWrapper");
-        let cards = document.querySelectorAll(".card");
-        const nextBtn = document.getElementById("nextBtn");
-        const prevBtn = document.getElementById("prevBtn");
-        const dotsContainer = document.getElementById("dots");
-
-        let index = 0;
-        let autoSlide;
-        let cardsPerView = 4;
-        let totalCards = cards.length;
-
-        // Clone cards for seamless infinite loop
-        function cloneCards() {
-            // Remove old clones if any
-            document.querySelectorAll('.card.clone').forEach(clone => clone.remove());
-
-            cards = document.querySelectorAll(".card"); // refresh
-
-            // Clone first few cards and append at the end
-            for (let i = 0; i < cardsPerView; i++) {
-                const clone = cards[i].cloneNode(true);
-                clone.classList.add('clone');
-                wrapper.appendChild(clone);
-            }
-
-            // Clone last few cards and prepend at the beginning
-            for (let i = totalCards - cardsPerView; i < totalCards; i++) {
-                const clone = cards[i].cloneNode(true);
-                clone.classList.add('clone');
-                wrapper.prepend(clone);
-            }
-
-            cards = document.querySelectorAll(".card"); // update list
-        }
-
-        function getCardsPerView() {
-            if (window.innerWidth <= 576) return 1;
-            if (window.innerWidth <= 991) return 2;
-            return 4;
-        }
-
-        function updateSlider(smooth = true) {
-            cardsPerView = getCardsPerView();
-            const cardWidth = cards[0].offsetWidth + 20; // gap is 20px
-
-            wrapper.style.transition = smooth ? 'transform 0.6s ease-in-out' : 'none';
-            wrapper.style.transform = `translateX(-${(index + cardsPerView) * cardWidth}px)`;
-        }
-
-        function createDots() {
-            dotsContainer.innerHTML = "";
-            for (let i = 0; i < totalCards; i++) {
-                const dot = document.createElement("div");
-                dot.classList.add("dot");
-                dot.addEventListener("click", () => {
-                    index = i;
-                    updateSlider();
-                    restartAuto();
-                });
-                dotsContainer.appendChild(dot);
-            }
-        }
-
-        function updateDots() {
-            const dots = document.querySelectorAll(".dot");
-            dots.forEach((dot, i) => {
-                dot.classList.toggle("active", i === index % totalCards);
-            });
-        }
-
-        function nextSlide() {
-            index++;
-            updateSlider();
-            updateDots();
-
-            // Reset to beginning when we reach the cloned cards
-            if (index >= totalCards) {
-                setTimeout(() => {
-                    index = 0;
-                    updateSlider(false); // jump without animation
-                }, 600);
-            }
-        }
-
-        function prevSlide() {
-            index--;
-            updateSlider();
-            updateDots();
-
-            // Reset when going before the first real card
-            if (index < 0) {
-                setTimeout(() => {
-                    index = totalCards - 1;
-                    updateSlider(false);
-                }, 600);
-            }
-        }
-
-        function startAuto() {
-            autoSlide = setInterval(nextSlide, 5000);
-        }
-
-        function stopAuto() {
-            clearInterval(autoSlide);
-        }
-
-        function restartAuto() {
-            stopAuto();
-            startAuto();
-        }
-
-        // Event Listeners
-        nextBtn.addEventListener("click", () => {
-            nextSlide();
-            restartAuto();
-        });
-
-        prevBtn.addEventListener("click", () => {
-            prevSlide();
-            restartAuto();
-        });
-
-        document.querySelector(".slider-container").addEventListener("mouseenter", stopAuto);
-        document.querySelector(".slider-container").addEventListener("mouseleave", startAuto);
-
-        window.addEventListener("resize", () => {
-            cardsPerView = getCardsPerView();
-            cloneCards(); // re-clone on resize
-            updateSlider(false);
-            createDots();
-            updateDots();
-        });
-
-        // Initialize
-        window.onload = () => {
-            cloneCards();
-            cardsPerView = getCardsPerView();
-            createDots();
-            updateSlider(false); // initial position (no animation)
-            startAuto();
-        };
-    </script>
+    <script src="{{ asset('js/cart.js') }}"></script>
+    <script src="{{ asset('js/home.js') }}"></script>
 </body>
 
 </html>
