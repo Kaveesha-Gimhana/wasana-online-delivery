@@ -28,5 +28,13 @@ class AdminUserSeeder extends Seeder
                 'role' => 'admin'
             ]
         );
+        User::updateOrCreate(
+            ['email' => 'gimhanak2003@gmail.com'],
+            [
+                'name' => 'Gimhana',
+                'password' => Hash::make('2275'),
+                'role' => 'admin'
+            ]
+        );
     }
 }
