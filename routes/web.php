@@ -48,3 +48,19 @@ Route::get('/admin/product',function(){
 Route::get('/admin/dashboard', function(){
     return view('admin.dashboard');
 })->name('admin.dashboard');
+
+Route::get('/admin/orders', function(){
+    return view('admin.orders');
+})->name('admin.orders');
+
+Route::get('/admin/settings',function(){
+    return view('admin.settings');
+})->name('admin.settings');
+
+Route::get('/admin/customers',function(){
+    return view('admin.customers');
+})->name('admin.customers');
+
+Route::get('/admin/admin',function(){
+    return view('admin.admin');
+})->name('admin.admin');

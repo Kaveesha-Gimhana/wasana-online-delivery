@@ -31,6 +31,7 @@
         }
 
         .sidebar a:hover {
+            border-left: 2px solid #ff5722;
             background: #1f2937;
             color: #fff;
         }
@@ -68,10 +69,10 @@
 
     <a href="{{ route('admin.dashboard') }}"><i class="bi bi-speedometer2"></i> Dashboard</a>
     <a href="{{ route('admin.product') }}"><i class="bi bi-box"></i> Products</a>
-    <!-- <a href="/admin/product"><i class="bi bi-box"></i> Products</a> -->
-    <a href="#"><i class="bi bi-cart"></i> Orders</a>
-    <a href="#"><i class="bi bi-people"></i> Users</a>
-    <a href="#"><i class="bi bi-gear"></i> Settings</a>
+    <a href="{{ route('admin.orders') }}"><i class="bi bi-cart"></i> Orders</a>
+    <a href="{{ route('admin.customers') }}"><i class="bi bi-person-vcard-fill"></i> Customers</a>
+    <a href="{{ route('admin.admin') }}"><i class="bi bi-people"></i> Admin</a>
+    <a href="{{ route('admin.settings') }}"><i class="bi bi-gear"></i> Settings</a>
     <a href=""><i class="bi bi-box-arrow-in-right"></i>Logout</a>
     <form method="POST" action="{{ route('admin.logout') }}">
     @csrf
