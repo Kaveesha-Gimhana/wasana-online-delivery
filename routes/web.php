@@ -23,6 +23,22 @@ Route::get('/single-view', function () {
 })->name('single.product');
 
 
+// 🔐 ADMIN AUTH ROUTES (NO LOGIN = ALLOWED ONLY HERE)
+/* Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('admin.login');
+Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
+
+
+// 🔒 PROTECTED ADMIN ROUTES (IMPORTANT FIX)
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])
+        ->name('admin.dashboard');
+
+    Route::post('/logout', [AdminController::class, 'logout'])
+        ->name('admin.logout');
+
+}); */
+
 // LOGIN (public)
 Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
@@ -34,17 +50,6 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])
         ->name('admin.dashboard');
 
-    /* Route::get('/product' , [AdminController::class, 'product'])
-        ->name('admin.product'); */
-
     Route::post('/logout', [AdminController::class, 'logout'])
         ->name('admin.logout');
 });
-
-Route::get('/admin/product',function(){
-    return view('admin.product');
-})->name('admin.product');
-
-Route::get('/admin/dashboard', function(){
-    return view('admin.dashboard');
-})->name('admin.dashboard');
