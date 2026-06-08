@@ -64,13 +64,22 @@
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-    <h4 class="text-center mb-4">🍰 Admin Panel</h4>
+    <h4 class="text-center mb-4"> Admin Panel</h4>
 
-    <a href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
-    <a href="#"><i class="bi bi-box"></i> Products</a>
+    <a href="{{ route('admin.dashboard') }}"><i class="bi bi-speedometer2"></i> Dashboard</a>
+    <a href="{{ route('admin.product') }}"><i class="bi bi-box"></i> Products</a>
+    <!-- <a href="/admin/product"><i class="bi bi-box"></i> Products</a> -->
     <a href="#"><i class="bi bi-cart"></i> Orders</a>
     <a href="#"><i class="bi bi-people"></i> Users</a>
     <a href="#"><i class="bi bi-gear"></i> Settings</a>
+    <a href=""><i class="bi bi-box-arrow-in-right"></i>Logout</a>
+    <form method="POST" action="{{ route('admin.logout') }}">
+    @csrf
+
+    <button type="submit" class="btn logout-btn">
+        Logout
+    </button>
+</form>
 </div>
 
 <!-- MAIN CONTENT -->
@@ -87,7 +96,6 @@
     </div>
 
     @yield('content')
-
 </div>
 
 </body>
