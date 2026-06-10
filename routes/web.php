@@ -39,28 +39,31 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
 
     Route::post('/logout', [AdminController::class, 'logout'])
         ->name('admin.logout');
+
+    Route::get('/admin/product', function () {
+        return view('admin.product');
+    })->name('admin.product');
+
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+
+    Route::get('/admin/orders', function () {
+        return view('admin.orders');
+    })->name('admin.orders');
+
+    Route::get('/admin/settings', function () {
+        return view('admin.settings');
+    })->name('admin.settings');
+
+    Route::get('/admin/customers', function () {
+        return view('admin.customers');
+    })->name('admin.customers');
+
+    Route::get('/admin/admin', function () {
+        return view('admin.admin');
+    })->name('admin.admin');
+    Route::get('/controller_page/product_add', function () {
+        return view('controller_page.product_add');
+    })->name('controller_page.product_add');
 });
-
-Route::get('/admin/product',function(){
-    return view('admin.product');
-})->name('admin.product');
-
-Route::get('/admin/dashboard', function(){
-    return view('admin.dashboard');
-})->name('admin.dashboard');
-
-Route::get('/admin/orders', function(){
-    return view('admin.orders');
-})->name('admin.orders');
-
-Route::get('/admin/settings',function(){
-    return view('admin.settings');
-})->name('admin.settings');
-
-Route::get('/admin/customers',function(){
-    return view('admin.customers');
-})->name('admin.customers');
-
-Route::get('/admin/admin',function(){
-    return view('admin.admin');
-})->name('admin.admin');
