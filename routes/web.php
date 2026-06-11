@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +41,9 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::post('/logout', [AdminController::class, 'logout'])
         ->name('admin.logout');
 
-    Route::get('/admin/product', function () {
+    /* Route::get('/admin/product', function () {
         return view('admin.product');
-    })->name('admin.product');
+    })->name('admin.product'); */
 
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
@@ -63,7 +64,17 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::get('/admin/admin', function () {
         return view('admin.admin');
     })->name('admin.admin');
+
     Route::get('/controller_page/product_add', function () {
         return view('controller_page.product_add');
     })->name('controller_page.product_add');
+
+    Route::post('/product/store', [ProductController::class, 'store'])
+    ->name('product.store');
+
+    Route::get('/products',[ProductController::class, 'index'])
+    ->name('admin.product');
+
 });
+
+
