@@ -3,8 +3,39 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\products;
 
 class ProductController extends Controller
 {
     //
+    public function store(Request $request){
+        $request->validate([
+            'product_code' => 'required|unique:products,product_code',
+            'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'price' => 'required|integer',
+            'category' => 'required',
+            'description' => 'required'
+        ]);
+
+        $imageName = time() . '.' . $request->image->extension();
+
+        $request->image->move(
+            public_path('uploads/products'),
+            $imageName
+        );
+
+        products::create([
+            'product_code' => $request->product_code,
+            'image' => $imageName,
+            'price' => $request->price,
+            'category' => $request->category,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->back()->with('success', 'Product Added Successfully');
+    }
+    public function index(){
+        $products = products::all();
+        return view('admin.product', compact('products'));
+    }
 }

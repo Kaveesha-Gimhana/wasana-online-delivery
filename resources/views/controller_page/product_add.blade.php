@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --primary-orange: #ff6b35;
@@ -38,7 +39,7 @@
         }
 
         .form-header {
-            background: linear-gradient(90deg, rgba(255,107,53,0.1) 0%, rgba(15,23,42,0) 100%);
+            background: linear-gradient(90deg, rgba(255, 107, 53, 0.1) 0%, rgba(15, 23, 42, 0) 100%);
             border-bottom: 1px solid rgba(255, 107, 53, 0.1);
             padding: 20px 25px;
         }
@@ -114,7 +115,8 @@
             border-radius: 8px;
             transition: all 0.3s ease;
         }
-        .form-control::placeholder{
+
+        .form-control::placeholder {
             color: #929292bf !important;
         }
 
@@ -207,54 +209,59 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="form-container">
-    <div class="form-header d-flex justify-content-between align-items-center">
-        <h2><i class="fa-solid fa-box-open me-2" style="color: var(--primary-orange);"></i>Add Products</h2>
-    </div>
+    <div class="form-container">
+        <div class="form-header d-flex justify-content-between align-items-center">
+            <h2><i class="fa-solid fa-box-open me-2" style="color: var(--primary-orange);"></i>Add Products</h2>
+        </div>
 
-    <form id="productForm" class="form-body">
-        
-        <div class="row g-4">
-            
-            <div class="col-md-4">
-                <div class="d-flex flex-column h-100 justify-content-between gap-3">
-                    <label class="form-label d-block mb-0">Action</label>
-                    <button type="button" class="btn btn-custom-close w-100 py-3" id="clearImageBtn">
-                        <i class="fa-solid fa-circle-xmark"></i> Close / Reset Image
-                    </button>
+        <form action="{{ route('product.store') }}" method="post" id="productForm" class="form-body" enctype="multipart/form-data">
+            @csrf
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="d-flex flex-column h-100 justify-content-between gap-3">
+                        <label class="form-label d-block mb-0">Action</label>
+                        <button type="button" class="btn btn-custom-close w-100 py-3" id="clearImageBtn">
+                            <i class="fa-solid fa-circle-xmark"></i> Close / Reset Image
+                        </button>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="col-md-8">
-                <label class="form-label">Product Image</label>
-                <div class="image-upload-wrapper" onclick="document.getElementById('imageInput').click()">
-                    <i class="fa-regular fa-images"></i>
-                    <p id="uploadText">Click here to upload product image</p>
-                    <img id="imagePreview" alt="Preview">
-                    <input type="file" id="imageInput" accept="image/*" class="d-none">
+
+                <div class="col-md-8">
+                    <label class="form-label">Product Image</label>
+                    <div class="image-upload-wrapper" onclick="document.getElementById('imageInput').click()">
+                        <i class="fa-regular fa-images"></i>
+                        <p id="uploadText">Click here to upload product image</p>
+                        <img id="imagePreview" alt="Preview">
+                        <input type="file"
+                            name="image"
+                            id="imageInput"
+                            accept="image/*"
+                            class="d-none">
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-6">
-                <label for="productCode" class="form-label">Product Code</label>
-                <input type="text" class="form-control" id="productCode" placeholder="Enter product code" required>
-            </div>
+                <div class="col-md-6">
+                    <label for="productCode" class="form-label">Product Code</label>
+                    <input type="text" name="product_code" class="form-control" id="productCode" placeholder="Enter product code" required>
+                </div>
 
-            <div class="col-md-6">
-                <label for="productPrice" class="form-label">Price</label>
-                <input type="number" class="form-control" id="productPrice" placeholder="Enter price" required>
-            </div>
+                <div class="col-md-6">
+                    <label for="productPrice" class="form-label">Price</label>
+                    <input type="number" name="price" class="form-control" id="productPrice" placeholder="Enter price" required>
+                </div>
 
-            <div class="col-md-7">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" rows="6" placeholder="Enter product description..."></textarea>
-            </div>
+                <div class="col-md-7">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="6" placeholder="Enter product description..."></textarea>
+                </div>
 
-            <div class="col-md-5">
-                <span class="category-title d-block">Category</span>
-                <div class="row g-2">
+                <div class="col-md-5">
+                    <span class="category-title d-block">Category</span>
+                    <!-- <div class="row g-2">
                     <div class="col-6">
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" id="catAnniversary">
@@ -287,69 +294,74 @@
                             <label class="form-check-label" for="catPrChemh">Pr.chemh</label>
                         </div>
                     </div>
+                </div> -->
+                    <select class="form-control" name="category">
+                        <option value="Anniversary">Anniversary</option>
+                        <option value="Birthday">Birthday</option>
+                        <option value="Cake">Cake</option>
+                        <option value="Christmas">Christmas</option>
+                        <option value="New Year">New Year</option>
+                    </select>
                 </div>
+
+                <div class="col-12 mt-4 pt-2 border-top border-secondary border-opacity-25 d-flex gap-3 justify-content-start">
+                    <button type="submit" class="btn btn-custom-save">
+                        <i class="fa-solid fa-floppy-disk me-2"></i>Save Product
+                    </button>
+                    <button type="button" class="btn btn-custom-clear" id="clearFormBtn">
+                        <i class="fa-solid fa-broom me-2"></i>Clear
+                    </button>
+                </div>
+
             </div>
+        </form>
+    </div>
 
-            <div class="col-12 mt-4 pt-2 border-top border-secondary border-opacity-25 d-flex gap-3 justify-content-start">
-                <button type="submit" class="btn btn-custom-save">
-                    <i class="fa-solid fa-floppy-disk me-2"></i>Save Product
-                </button>
-                <button type="button" class="btn btn-custom-clear" id="clearFormBtn">
-                    <i class="fa-solid fa-broom me-2"></i>Clear
-                </button>
-            </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-        </div>
-    </form>
-</div>
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const uploadText = document.getElementById('uploadText');
+        const clearImageBtn = document.getElementById('clearImageBtn');
+        const clearFormBtn = document.getElementById('clearFormBtn');
+        const productForm = document.getElementById('productForm');
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        // Image Upload Preview Logic
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.addEventListener('load', function() {
+                    imagePreview.setAttribute('src', this.result);
+                    imagePreview.style.display = 'block';
+                    uploadText.style.display = 'none';
+                });
+                reader.readAsDataURL(file);
+            }
+        });
 
-<script>
-    const imageInput = document.getElementById('imageInput');
-    const imagePreview = document.getElementById('imagePreview');
-    const uploadText = document.getElementById('uploadText');
-    const clearImageBtn = document.getElementById('clearImageBtn');
-    const clearFormBtn = document.getElementById('clearFormBtn');
-    const productForm = document.getElementById('productForm');
+        // Reset Image Only
+        clearImageBtn.addEventListener('click', function() {
+            imageInput.value = '';
+            imagePreview.style.display = 'none';
+            imagePreview.setAttribute('src', '');
+            uploadText.style.display = 'block';
+        });
 
-    // Image Upload Preview Logic
-    imageInput.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.addEventListener('load', function() {
-                imagePreview.setAttribute('src', this.result);
-                imagePreview.style.display = 'block';
-                uploadText.style.display = 'none';
-            });
-            reader.readAsDataURL(file);
-        }
-    });
+        // Clear Full Form
+        clearFormBtn.addEventListener('click', function() {
+            productForm.reset();
+            imageInput.value = '';
+            imagePreview.style.display = 'none';
+            imagePreview.setAttribute('src', '');
+            uploadText.style.display = 'block';
+        });
 
-    // Reset Image Only
-    clearImageBtn.addEventListener('click', function() {
-        imageInput.value = '';
-        imagePreview.style.display = 'none';
-        imagePreview.setAttribute('src', '');
-        uploadText.style.display = 'block';
-    });
-
-    // Clear Full Form
-    clearFormBtn.addEventListener('click', function() {
-        productForm.reset();
-        imageInput.value = '';
-        imagePreview.style.display = 'none';
-        imagePreview.setAttribute('src', '');
-        uploadText.style.display = 'block';
-    });
-
-    // Form Submit Event (Prevent actual reload for preview)
-    productForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Product details saved successfully! (UI Demo Only)');
-    });
-</script>
+        // Form Submit Event (Prevent actual reload for preview)
+        
+    </script>
 
 </body>
+
 </html>
