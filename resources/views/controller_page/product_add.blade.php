@@ -301,6 +301,8 @@
                         <option value="Cake">Cake</option>
                         <option value="Christmas">Christmas</option>
                         <option value="New Year">New Year</option>
+                        <option value="Parchment ">Parchment</option>
+                        <option value="Other Icing Cake">Other Ising Cake</option>
                     </select>
                 </div>
 
