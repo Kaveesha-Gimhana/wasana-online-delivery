@@ -15,14 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/all-products', function () {
+/* Route::get('/all-products', function () {
     return view('allProduct');
-})->name('products');
+})->name('products'); */
+Route::get('/all-products',[ProductController::class,'showAllProducts']);
 
-Route::get('/single-view', function () {
+/* Route::get('/single-view', function () {
     return view('singalProdct');
-})->name('single.product');
-
+})->name('single.product'); */
+Route::get('/product/{product_code}', [ProductController::class, 'show']);
 
 // LOGIN (public)
 Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('admin.login');
@@ -74,6 +75,9 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
 
     Route::get('/products',[ProductController::class, 'index'])
     ->name('admin.product');
+
+    Route::delete('/product/{product_code}', [ProductController::class, 'destroy'])
+    ->name('product.destroy');
 
 });
 

@@ -214,6 +214,17 @@
         color: #1f2937;
         font-weight: 600;
     }
+
+    .delete-modal-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 87, 34, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
 </style>
 
 <div class="product-layout-container">
@@ -276,7 +287,11 @@
                                     <i class="bi bi-eye"></i>
                                 </button>
                                 <button class="btn table-action-btn text-warning" title="Edit"><i class="bi bi-pencil-square"></i></button>
-                                <button class="btn table-action-btn text-danger" title="Delete"><i class="bi bi-trash3"></i></button>
+                                <button class="btn table-action-btn text-danger delete-product-btn"
+                                    title="Delete"
+                                    data-code="{{ $product->product_code }}">
+                                    <i class="bi bi-trash3"></i>
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -345,6 +360,64 @@
         </div>
     </div>
 </div>
+<!-- Delete Confirmation Modal -->
+<div class="modal fade modern-modal" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center p-4">
+
+                <div class="mb-3">
+                    <div style="
+                        width:80px;
+                        height:80px;
+                        background:rgba(255,87,34,0.1);
+                        border-radius:50%;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        margin:auto;">
+                        <i class="bi bi-trash3-fill text-danger fs-1"></i>
+                    </div>
+                </div>
+
+                <h4 class="fw-bold mb-2" style="color:#1f2937;">
+                    Delete Product?
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Are you sure you want to delete
+                    <strong id="deleteProductCode"></strong> ?
+                    <br>
+                    This action cannot be undone.
+                </p>
+
+                <div class="d-flex justify-content-center gap-3">
+
+                    <button type="button"
+                        class="btn btn-outline-custom px-4"
+                        data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+
+                    <form id="deleteForm" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit"
+                            class="btn btn-orange-primary px-4">
+                            <i class="bi bi-trash3"></i>
+                            Yes, Delete
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -384,5 +457,33 @@
             });
         }
     });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const deleteButtons = document.querySelectorAll('.delete-product-btn');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+
+            const productCode = this.getAttribute('data-code');
+
+            document.getElementById('deleteProductCode').innerText = productCode;
+
+            // ✅ IMPORTANT FIX: correct Laravel route
+            const baseUrl = "{{ url('admin/product') }}";
+
+            document.getElementById('deleteForm').action =
+                baseUrl + '/' + productCode;
+
+            const deleteModal = new bootstrap.Modal(
+                document.getElementById('deleteModal')
+            );
+
+            deleteModal.show();
+        });
+    });
+
+});
 </script>
 @endsection

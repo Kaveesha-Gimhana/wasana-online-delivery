@@ -772,6 +772,10 @@ body{
     .wb-contact-group{
         justify-content:center !important;
     }
+    .product-card-cart{
+        font-size: 10px !important;
+        margin: 0 !important;
+    }
 
 }
 
@@ -802,4 +806,34 @@ body{
         height:40px !important;
     }
 
+}
+/* =========================================
+   BACK BUTTON STYLES
+========================================= */
+.wb-back-btn {
+    color: #cbd5e1 !important; /* ලා අළු පාට */
+    text-decoration: none !important;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s !important;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05); /* පොඩි බැක්ග්‍රවුන්ඩ් එකක් */
+}
+
+.wb-back-btn:hover {
+    color: #ff5722 !important; /* හොවර් කරද්දි තැඹිලි පාට වෙනවා */
+    background: rgba(255, 87, 34, 0.1);
+    transform: translateX(-4px); /* වමට පොඩ්ඩක් මූව් වෙනවා */
+}
+
+/* Mobile වලදී බටන් එක තවත් පැහැදිලිව පේන්න */
+@media (max-width: 768px) {
+    .wb-back-btn {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
 }
