@@ -38,4 +38,5 @@ class ProductController extends Controller
         $products = products::all();
         return view('admin.product', compact('products'));
     }
+    
 }
