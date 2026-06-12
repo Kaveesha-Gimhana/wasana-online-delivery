@@ -145,145 +145,30 @@
             <!-- Product Grid -->
             <div class="product-grid">
 
-                <!-- CARD -->
-                <!-- Copy this card 30 times -->
+    @foreach($products as $product)
 
-                <div class="product-card">
-                    <a href="{{ url('/single-view') }}" class="product-card-link">
-                        <img src="{{ asset('images/G 09.jpg') }}">
-                        <h3 class="">P 01</h3>
-                        <p>LKR 3,000.00</p>
-                        <a class="btn product-card-cart">add to cart</a>
-                    </a>
-                </div>
+    <div class="product-card">
 
-                <div class="product-card">
-                    <img src="{{ asset('images/G 11.jpg') }}">
-                    <h3>P 02</h3>
-                    <p>LKR 2,500.00</p>
-                    <a class="btn product-card-cart">add to cart</a>
-                </div>
+    <a href="{{ url('/product/'.$product->product_code) }}" class="product-card-link">
 
-                <div class="product-card">
-                    <img src="{{ asset('images/G 13.jpg') }}">
-                    <h3>P 03</h3>
-                    <p>LKR 4,000.00</p>
-                    <a class="btn product-card-cart">add to cart</a>
-                </div>
+        <img src="{{ asset('uploads/products/'.$product->image) }}"
+             alt="{{ $product->product_code }}">
 
-                <div class="product-card">
-                    <img src="{{ asset('images/G 20.jpg') }}">
-                    <h3>P 04</h3>
-                    <p>LKR 1,800.00</p>
-                    <a class="btn product-card-cart">add to cart</a>
-                </div>
+        <h3>{{ $product->product_code }}</h3>
 
-                <div class="product-card">
-                    <img src="{{ asset('images/G 27.jpg') }}">
-                    <h3>P 05</h3>
-                    <p>LKR 5,000.00</p>
-                    <a class="btn product-card-cart">add to cart</a>
-                </div>
+        <p>LKR {{ number_format($product->price, 2) }}</p>
 
-                <div class="product-card">
-                    <img src="{{ asset('images/G 36.jpg') }}">
-                    <h3>P 06</h3>
-                    <p>LKR 2,000.00</p>
-                    <a class="btn product-card-cart">add to cart</a>
-                </div>
+    </a>
 
-                <div class="product-card">
-                    <img src="{{ asset('images/G 47.jpg') }}">
-                    <h3>P 07</h3>
-                    <p>LKR 2,700.00</p>
-                    <a class="btn product-card-cart">add to cart</a>
-                </div>
+    <a href="#" class="btn product-card-cart">
+        Add To Cart
+    </a>
 
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=8">
-                    <h3>P 08</h3>
-                    <p>LKR 3,200.00</p>
-                    <a class="btn product-card-cart">add to cart</a>
-                </div>
+</div>
 
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=9">
-                    <h3>P 09</h3>
-                    <p>LKR 6,000.00</p>
-                    <a class="btn product-card-cart">add to cart</a>
-                </div>
+    @endforeach
 
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=10">
-                    <h3>P 10</h3>
-                    <p>LKR 2,900.00</p>
-                    <a class="btn product-card-cart">add to cart</a>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=11">
-                    <h3>P 11</h3>
-                    <p>LKR 4,500.00</p>
-                    <a class="btn product-card-cart">add to cart</a>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=12">
-                    <h3>P 12</h3>
-                    <p>LKR 3,900.00</p>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=13">
-                    <h3>P 13</h3>
-                    <p>LKR 2,400.00</p>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=14">
-                    <h3>P 14</h3>
-                    <p>LKR 3,600.00</p>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=15">
-                    <h3>P 15</h3>
-                    <p>LKR 7,000.00</p>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=16">
-                    <h3>P 16</h3>
-                    <p>LKR 5,300.00</p>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=17">
-                    <h3>P 17</h3>
-                    <p>LKR 1,900.00</p>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=18">
-                    <h3>P 18</h3>
-                    <p>LKR 3,100.00</p>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=19">
-                    <h3>P 19</h3>
-                    <p>LKR 4,200.00</p>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://picsum.photos/300/300?random=20">
-                    <h3>P 20</h3>
-                    <p>LKR 2,100.00</p>
-                </div>
-
-                <!-- add more same widiyata random=30 wenakam -->
-
-            </div>
+</div>
 
         </div>
 

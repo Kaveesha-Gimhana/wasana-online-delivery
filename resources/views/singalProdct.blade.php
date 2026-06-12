@@ -7,11 +7,9 @@
 
     <title>Wasana Bakers | All Product</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-    <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('CSS/products.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/overoll_user.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -20,11 +18,9 @@
 </head>
 
 <body>
-    <!-- Navbar Section Start -->
     <nav class="navbar navbar-expand-lg custom-navbar sticky-top">
         <div class="container-fluid px-4">
 
-            <!-- Logo + Brand -->
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="{{ asset('images/nav-logo.png') }}" alt="logo" class="logo">
                 <div class="ms-2">
@@ -33,12 +29,10 @@
                 </div>
             </a>
 
-            <!-- Toggle -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 ☰
             </button>
 
-            <!-- Menu -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-center">
 
@@ -79,72 +73,39 @@
 
         </div>
     </nav>
-    <!-- Navbar Section End -->
-    <!-- Content Section Start -->
-    <!-- <div class="card mb-3 singal-prodct-card m-5">
-        <div class="row g-0 singal-prodct-div">
-            <div class="col-md-5">
-                <img src="{{ asset('images/G 11.jpg') }}" class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-7">
-                <div class="card-body">
-                    <h5 class="card-title">P 50</h5>
-                    <p>Rs.3000.00</p>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <p>ඇතුලත කේක් එක චොක්ලට් හෝ රිබන් දැමු විට Rs.100.00 වැඩි වේ..</p>
-                    <p></p>
-                    <div>
-                        <button class="btn cart-btn m-1">Add to Cart</button>
-                        <br>
-                        <button class="btn buy-btn m-1">Buy Now</button>
-                    </div>
-                    <div>
-                        <div class="infomation-div">
-                            <button class="btn btn-infomation me-3"><i class="bi bi-whatsapp"></i></button>
-                            <button class="btn btn-infomation ms-3"><i class="bi bi-telephone"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Comtent Section End -->
-    <!-- ================= PRODUCT CARD ================= -->
     <div class="container-fluid">
         <div class="wb-single-product">
 
+            <div class="row mb-4">
+                <div class="col-12">
+                    <a href="{{ url()->previous() }}" class="wb-back-btn">
+                        <i class="bi bi-arrow-left"></i> Back to Previous Page
+                    </a>
+                </div>
+            </div>
+
             <div class="row g-4 align-items-center">
 
-                <!-- Product Image -->
                 <div class="col-lg-5">
                     <div class="wb-product-image-box">
-                        <img src="{{ asset('images/G 11.jpg') }}"
-                            alt="Product"
+                        <img src="{{ asset('uploads/products/'.$product->image) }}"
+                            alt="{{ $product->product_code }}"
                             class="wb-product-image">
                     </div>
                 </div>
 
-                <!-- Product Details -->
                 <div class="col-lg-7">
 
                     <div class="wb-product-details">
 
-                        <!-- Product Name -->
                         <h2 class="wb-product-title">
-                            P-01 Chocolate Cake
+                            {{ $product->product_code }}
                         </h2>
 
-                        <!-- Price -->
                         <h3 class="wb-product-price">
-                            Rs. 3,000.00
+                            Rs. {{ number_format($product->price, 2) }}
                         </h3>
 
-                        <!-- Select Option -->
                         <div class="mb-3">
                             <label class="wb-label">
                                 Select Option
@@ -158,7 +119,6 @@
                             </select>
                         </div>
 
-                        <!-- Quantity -->
                         <div class="mb-4">
 
                             <label class="wb-label">
@@ -188,21 +148,16 @@
 
                         </div>
 
-                        <!-- Description -->
                         <div class="wb-description-box">
 
                             <h5>Description</h5>
 
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Voluptates pariatur maxime exercitationem.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Voluptatem officia laboriosam reprehenderit.
+                                {{ $product->description }}
                             </p>
 
                         </div>
 
-                        <!-- Buttons -->
                         <div class="wb-btn-group">
 
                             <button class="btn wb-cart-btn">
@@ -217,10 +172,10 @@
 
                         </div>
 
-                        <!-- Contact -->
                         <div class="wb-contact-group">
 
-                            <a href="#"
+                            <a href="javascript:void(0)"
+                                onclick="openWhatsApp()"
                                 class="wb-contact-btn">
                                 <i class="bi bi-whatsapp"></i>
                             </a>
@@ -240,10 +195,9 @@
 
         </div>
     </div>
-    <!-- Cart Popup Overlay -->
+
     <div class="cart-overlay" id="cartOverlay"></div>
 
-    <!-- Cart Drawer -->
     <div class="cart-drawer" id="cartDrawer">
 
         <div class="cart-header">
@@ -255,7 +209,6 @@
 
         <div class="cart-body">
 
-            <!-- Product -->
             <div class="cart-item">
                 <img src="{{ asset('images/birthday_cake.jpg') }}" alt="cake">
 
@@ -273,7 +226,6 @@
                 <i class="bi bi-trash3 remove-btn"></i>
             </div>
 
-            <!-- Product -->
             <div class="cart-item">
                 <img src="{{ asset('images/christmas_cake.jpg') }}" alt="cake">
 
@@ -310,21 +262,35 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
+    
     <script>
         let qty = 1;
 
+        // මෙතන 'fnction' එක 'function' ලෙස නිවැරදි කලා
         function increaseQty() {
             qty++;
             document.getElementById('wbQty').value = qty;
         }
 
+        // මෙතනත් 'fnction' එක 'function' ලෙස නිවැරදි කලා
         function decreaseQty() {
-
             if (qty > 1) {
                 qty--;
                 document.getElementById('wbQty').value = qty;
             }
-
+        }
+    </script>
+    
+    <script>
+        // මෙතනත් 'fnction' එක 'function' ලෙස නිවැරදි කලා
+        function openWhatsApp() {
+            let phone = "94711500900";
+            let url = window.location.href;
+            let message = "Hi, I am interested in this product: \n" + url;
+            let whatsappURL = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+            window.open(whatsappURL, "_blank");
         }
     </script>
 </body>
+
+</html>

@@ -8,7 +8,8 @@ use App\Models\products;
 class ProductController extends Controller
 {
     //
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $request->validate([
             'product_code' => 'required|unique:products,product_code',
             'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
@@ -34,9 +35,32 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', 'Product Added Successfully');
     }
-    public function index(){
+    public function index()
+    {
         $products = products::all();
         return view('admin.product', compact('products'));
     }
-    
+    public function showAllProducts()
+    {
+        $products = products::all();
+        return view('allProduct', compact('products'));
+    }
+    public function show($product_code)
+    {
+        $product = products::where('product_code', $product_code)->firstOrFail();
+
+        return view('singalProdct', compact('product'));
+    }
+    public function destroy($product_code)
+{
+    $product = products::where('product_code', $product_code)->firstOrFail();
+
+    if ($product->image && file_exists(public_path('uploads/products/' . $product->image))) {
+        unlink(public_path('uploads/products/' . $product->image));
+    }
+
+    $product->delete();
+
+    return redirect()->back()->with('success', 'Product deleted successfully');
+}
 }
