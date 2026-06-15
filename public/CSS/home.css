@@ -477,3 +477,138 @@ body {
     }
 }
 /* hidden cart item Section End */
+
+/* ==========================================
+   MODERN FOOTER & GOOGLE MAP STYLES
+========================================== */
+
+.footer-main {
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: #fff;
+    font-family: 'Figtree', sans-serif;
+}
+
+.footer-logo {
+    color: #ff5722;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+}
+
+.footer-title {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    position: relative;
+}
+
+/* Modern line underline for headings */
+.footer-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 30px;
+    background-color: #ff5722;
+}
+
+.footer-text {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Helper Class for Orange Icons */
+.text-orange {
+    color: #ff5722 !important;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #94a3b8;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ff5722;
+    padding-left: 6px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+    font-size: 16px;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #fff;
+    background: #ff5722;
+    transform: translateY(-3px);
+}
+
+/* Modern Glassmorphic Map Container */
+.footer-map-container {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.footer-map-container:hover {
+    transform: scale(1.01);
+}
+
+.footer-map-container iframe {
+    display: block;
+    /* Map eka dark look ekak krnna gray tint ekak damma modern wenna */
+    filter: grayscale(20%) invert(5%) contrast(95%); 
+}
+
+.footer-line {
+    border-color: rgba(255, 255, 255, 0.08);
+    margin: 30px 0 20px 0;
+}
+
+.footer-bottom {
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* Responsive adjustments */
+@media(max-width: 991px) {
+    .footer-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .footer-main .col-md-6, .footer-main .col-lg-3, .footer-main .col-lg-5 {
+        text-align: center;
+    }
+    .footer-links a:hover {
+        padding-left: 0;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+}
