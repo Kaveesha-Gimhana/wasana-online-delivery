@@ -137,7 +137,7 @@
 
                     <!-- CARD 3 -->
                     <div class="card card-slider">
-                        <img src="https://picsum.photos/id/251/600/400" class="card-img-top">
+                        <img src="{{ asset('images/v.jpeg') }}" class="card-img-top">
                         <div class="card-body text-center">
                             <h5>Valentine Cake</h5>
                             <p>Fresh strawberry cream cake.</p>
@@ -157,7 +157,7 @@
 
                     <!-- CARD 5 -->
                     <div class="card card-slider">
-                        <img src="https://picsum.photos/id/1016/600/400" class="card-img-top">
+                        <img src="{{ asset('images/7d83baca37abd108ed3918184480583c.jpg.jpeg') }}" class="card-img-top">
                         <div class="card-body text-center">
                             <h5>Gateau Cake</h5>
                             <p>Premium layered cake.</p>
@@ -167,7 +167,7 @@
 
                     <!-- CARD 6 -->
                     <div class="card card-slider">
-                        <img src="https://picsum.photos/id/1025/600/400" class="card-img-top">
+                        <img src="{{ asset('images/746e73d8c5c37517d29dd7f876f47f06.jpg.jpeg') }}" class="card-img-top">
                         <div class="card-body text-center">
                             <h5>Bento Cake</h5>
                             <p>Mini cute cake.</p>
@@ -228,18 +228,14 @@
                         <h5>ABOUT US</h5>
 
                         <h1>
-                            We Build Modern & Creative Websites
+                            Baking Happiness Since Day One
                         </h1>
 
                         <p>
-                            We create professional, responsive, and modern web
-                            applications using Laravel, Bootstrap, and modern
-                            technologies.
-                        </p>
-
-                        <p>
-                            Our mission is to provide high-quality digital
-                            solutions with beautiful user experiences.
+                           Horana Wasana Bakers is your trusted local bakery, 
+                           offering fresh, delicious icing cakes and sweet treats.
+                            We bring quality, creativity, and reliable home delivery 
+                            for every special celebration.
                         </p>
 
                         <!-- Info Boxes -->
@@ -249,7 +245,7 @@
 
                                 <div class="about-box">
 
-                                    <h3>5+</h3>
+                                    <h3>30+</h3>
                                     <p>Years Experience</p>
 
                                 </div>
@@ -260,8 +256,8 @@
 
                                 <div class="about-box">
 
-                                    <h3>120+</h3>
-                                    <p>Projects Completed</p>
+                                    <h3>300+</h3>
+                                    <p>Our Outlets</p>
 
                                 </div>
 
@@ -285,20 +281,27 @@
     </section>
     <!-- About Section End -->
     <!-- Footer Start -->
+    <!-- Footer Start -->
     <footer class="footer-main pt-5 pb-3">
         <div class="container">
             <div class="row g-4">
 
-                <!-- Brand -->
-                <div class="col-md-4">
+                <!-- Brand & About -->
+                <div class="col-lg-3 col-md-6">
                     <h4 class="footer-logo">Wasana Bakers</h4>
                     <p class="footer-text">
                         Fresh, delicious and custom-made cakes delivered to your doorstep with love and care.
                     </p>
+                    <!-- Social Icons -->
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                    </div>
                 </div>
 
                 <!-- Quick Links -->
-                <div class="col-md-2">
+                <div class="col-lg-2 col-md-6 ps-lg-4">
                     <h5 class="footer-title">Quick Links</h5>
                     <ul class="footer-links">
                         <li><a href="#">Home</a></li>
@@ -309,7 +312,7 @@
                 </div>
 
                 <!-- Support -->
-                <div class="col-md-3">
+                <div class="col-lg-2 col-md-6">
                     <h5 class="footer-title">Support</h5>
                     <ul class="footer-links">
                         <li><a href="#">FAQ</a></li>
@@ -319,20 +322,31 @@
                     </ul>
                 </div>
 
-                <!-- Contact -->
-                <div class="col-md-3">
-                    <h5 class="footer-title">Contact</h5>
-                    <p class="footer-text">
-                        📍 Galle, Sri Lanka <br>
-                        📞 +94 77 123 4567 <br>
-                        ✉ info@wasana.lk
-                    </p>
-
-                    <!-- Social -->
-                    <div class="social-icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                <!-- Contact Info & Map -->
+                <div class="col-lg-5 col-md-6">
+                    <h5 class="footer-title">Find Us</h5>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <p class="footer-text mb-2">
+                                <i class="bi bi-geo-alt-fill text-orange me-2"></i> Galle, Sri Lanka <br>
+                                <i class="bi bi-telephone-fill text-orange me-2"></i> +94 77 123 4567 <br>
+                                <i class="bi bi-envelope-fill text-orange me-2"></i> info@wasana.lk
+                            </p>
+                        </div>
+                        <!-- Modern Google Map Embed -->
+                        <div class="col-12">
+                            <div class="footer-map-container">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.5749004025915!2d80.0900809!3d6.6910419999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3b50b2b6888d5%3A0x2c24ea9de840a24c!2sWasana%20Bakers%20(Pvt)%20Ltd%20-%20Head%20Office!5e1!3m2!1sen!2ssg!4v1781520383342!5m2!1sen!2ssg" 
+                                    width="100%" 
+                                    height="150" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -347,6 +361,10 @@
         </div>
     </footer>
     <!-- Footer End -->
+    <!-- Footer End -->
+
+
+    
     <!-- Cart Popup Overlay -->
     <div class="cart-overlay" id="cartOverlay"></div>
 
