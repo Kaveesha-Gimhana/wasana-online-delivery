@@ -55,7 +55,7 @@
                     </li>
 
                     <li class="nav-item ms-3">
-                        <a class="btn order-btn" href="{{ url('/All_Products') }}">Order Now</a>
+                        <a class="btn order-btn" href="{{ url('/all-products') }}">Order Now</a>
                     </li>
 
                     <li class="nav-item ms-3">
@@ -101,7 +101,7 @@
                         convenience, and joy to every moment.
                     </p>
                     <!-- <button class="car-btn btn mb-3">Order Now</button> -->
-                    <a class="car-btn btn mb-3" href="{{ url('/All_Products') }}">Oder Now</a>
+                    <a class="car-btn btn mb-3" href="{{ url('/all-products') }}">Oder Now</a>
                 </div>
             </div>
         </div>
