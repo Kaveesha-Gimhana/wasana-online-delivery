@@ -17,9 +17,245 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
+    <style>
+        /* ==========================================================================
+           1. RESET & MAIN WRAPPER STYLING
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        /* Fullscreen Overlay Box */
+        .premium-loader-wrapper {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Class to trigger structural fade-out via Javascript integration hook */
+        .premium-loader-wrapper.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* ==========================================================================
+           2. ANIMATION CORE - THE FLUID ROTATING RING
+           ========================================================================== */
+        .loader-core-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fluid-ring {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            /* Gradient dynamic composition representation mimicking Wasana Palette */
+            border-top-color: #ff5722;
+            border-right-color: rgba(255, 87, 34, 0.2);
+            animation: spinFluid 1.2s cubic-bezier(0.5, 0.1, 0.4, 0.9) infinite;
+        }
+
+        /* Inner soft pulse icon/dot placeholder frame node */
+        /* .loader-center-pulse {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #ff7043, #ff5722);
+            border-radius: 50%;
+            box-shadow: 0 0 25px rgba(255, 87, 34, 0.7);
+            animation: pulseCore 1.5s ease-in-out infinite;
+        } */
+
+        .loader-logo {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: logoPulse 1.5s ease-in-out infinite;
+        }
+
+        .loader-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        @keyframes logoPulse {
+
+            0%,
+            100% {
+                transform: scale(0.95);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        /* ==========================================================================
+           3. BRANDING TYPOGRAPHY & LOADING PROGRESS BAR
+           ========================================================================== */
+        .brand-meta-group {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .brand-meta-group h2 {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .brand-meta-group h2 span {
+            color: #ff5722;
+            /* Matches primary interactive layouts */
+        }
+
+        .brand-meta-group p {
+            color: #64748b;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* Progress Bar UI Element Track Container */
+        .progress-track {
+            width: 180px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Deterministic progress fill animation sequence line */
+        .progress-fill-line {
+            position: absolute;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #ff7043, #ff5722);
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+            animation: fillProgress 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* ==========================================================================
+           4. CSS KEYFRAMES SYSTEM DEFINITIONS
+           ========================================================================== */
+        @keyframes spinFluid {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulseCore {
+
+            0%,
+            100% {
+                transform: scale(0.9);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+                box-shadow: 0 0 35px rgba(255, 87, 34, 0.9);
+            }
+        }
+
+        @keyframes fillProgress {
+            0% {
+                width: 0%;
+            }
+
+            30% {
+                width: 45%;
+            }
+
+            65% {
+                width: 70%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* Dummy content frame box only to showcase layout transition normalization */
+        .demo-main-content {
+            text-align: center;
+            color: #f8fafc;
+        }
+
+        .demo-main-content h1 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .demo-main-content p {
+            color: #94a3b8;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body class="antialiased">
+    <!-- Premium Loader Component Start -->
+    <div class="premium-loader-wrapper" id="globalPageLoader">
+
+        <!-- Rotating Ring Elements Block -->
+        <div class="loader-core-container">
+            <div class="fluid-ring"></div>
+
+            <div class="loader-logo">
+                <img src="{{ asset('images/nav-logo.png') }}" alt="Wasana Logo">
+            </div>
+        </div>
+
+        <!-- Typography Branding Metrics Track -->
+        <div class="brand-meta-group">
+            <h2>Wasana <span>Bakers</span></h2>
+            <p>Online Delivery</p>
+
+            <!-- Structural Track Bar System -->
+            <div class="progress-track">
+                <div class="progress-fill-line"></div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Premium Loader Component End -->
     <!-- Navbar Section Start -->
     <nav class="navbar navbar-expand-lg custom-navbar sticky-top">
         <div class="container-fluid px-4">
@@ -232,9 +468,9 @@
                         </h1>
 
                         <p>
-                           Horana Wasana Bakers is your trusted local bakery, 
-                           offering fresh, delicious icing cakes and sweet treats.
-                            We bring quality, creativity, and reliable home delivery 
+                            Horana Wasana Bakers is your trusted local bakery,
+                            offering fresh, delicious icing cakes and sweet treats.
+                            We bring quality, creativity, and reliable home delivery
                             for every special celebration.
                         </p>
 
@@ -290,7 +526,10 @@
                 <div class="col-lg-3 col-md-6">
                     <h4 class="footer-logo">Wasana Bakers</h4>
                     <p class="footer-text">
-                        Fresh, delicious and custom-made cakes delivered to your doorstep with love and care.
+                        Horana Wasana Bakery, founded in 1995 by Mr. Dayananda Bobuwala and
+                        Mrs. Anusha Wijayanthi Perera in Govinna, Ratiala, is rooted in the founders’
+                        strong connection to Horana. Today, it continues its tradition of
+                        quality while offering convenient online delivery.
                     </p>
                     <!-- Social Icons -->
                     <div class="social-icons mt-3">
@@ -328,21 +567,21 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <p class="footer-text mb-2">
-                                <i class="bi bi-geo-alt-fill text-orange me-2"></i> Galle, Sri Lanka <br>
-                                <i class="bi bi-telephone-fill text-orange me-2"></i> +94 77 123 4567 <br>
-                                <i class="bi bi-envelope-fill text-orange me-2"></i> info@wasana.lk
+                                <i class="bi bi-geo-alt-fill text-orange me-2"></i> No. 18, Wasana Bakers Factory,<br> Kandana,Horana <br> Sri lanka. <br>
+                                <i class="bi bi-telephone-fill text-orange me-2"></i> 034 22 50 600 <br>
+                                <i class="bi bi-envelope-fill text-orange me-2"></i> wasanadelivery@gmail.com
                             </p>
                         </div>
                         <!-- Modern Google Map Embed -->
                         <div class="col-12">
                             <div class="footer-map-container">
-                                <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.5749004025915!2d80.0900809!3d6.6910419999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3b50b2b6888d5%3A0x2c24ea9de840a24c!2sWasana%20Bakers%20(Pvt)%20Ltd%20-%20Head%20Office!5e1!3m2!1sen!2ssg!4v1781520383342!5m2!1sen!2ssg" 
-                                    width="100%" 
-                                    height="150" 
-                                    style="border:0;" 
-                                    allowfullscreen="" 
-                                    loading="lazy" 
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.5749004025915!2d80.0900809!3d6.6910419999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3b50b2b6888d5%3A0x2c24ea9de840a24c!2sWasana%20Bakers%20(Pvt)%20Ltd%20-%20Head%20Office!5e1!3m2!1sen!2ssg!4v1781520383342!5m2!1sen!2ssg"
+                                    width="100%"
+                                    height="150"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                             </div>
@@ -364,7 +603,7 @@
     <!-- Footer End -->
 
 
-    
+
     <!-- Cart Popup Overlay -->
     <div class="cart-overlay" id="cartOverlay"></div>
 
@@ -433,7 +672,19 @@
 
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Target elements matching critical performance pipelines
+            const loaderElement = document.getElementById("globalPageLoader");
 
+            // Adds a micro-delay structure to ensure progress bar completes flawlessly
+            setTimeout(() => {
+                if (loaderElement) {
+                    loaderElement.classList.add("fade-out");
+                }
+            }, 2600); // 2.6 seconds delay mapping beautifully with CSS animation metrics
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
     <script src="{{ asset('js/home.js') }}"></script>

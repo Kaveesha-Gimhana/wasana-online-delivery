@@ -286,7 +286,17 @@
                                     data-desc="{{ $product->description ?? 'No description available for this cake.' }}">
                                     <i class="bi bi-eye"></i>
                                 </button>
-                                <button class="btn table-action-btn text-warning" title="Edit"><i class="bi bi-pencil-square"></i></button>
+                                <button class="btn table-action-btn text-warning edit-product-btn"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editProductModal"
+                                    data-id="{{ $product->id }}"
+                                    data-code="{{ $product->product_code }}"
+                                    data-price="{{ $product->price }}"
+                                    data-category="{{ $product->category }}"
+                                    data-description="{{ $product->description }}"
+                                    data-img="{{ asset('uploads/products/' . $product->image) }}">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
                                 <button class="btn table-action-btn text-danger delete-product-btn"
                                     title="Delete"
                                     data-code="{{ $product->product_code }}">
@@ -357,6 +367,76 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modern-modal" id="editProductModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+            <form id="editForm" method="POST">
+                @csrf
+                @method('PUT')
+
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">
+                        <i class="bi bi-pencil-square text-warning me-2"></i>
+                        Edit Product
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row g-3">
+
+                        <div class="col-md-12">
+                            <label class="form-label">Product Image</label>
+
+                            <input type="file" name="image" id="edit_image" class="form-control">
+
+                            <div class="mt-2">
+                                <small class="text-muted">Current Image:</small><br>
+                                <img id="current_image" src=""
+                                    style="width:120px;height:120px;object-fit:cover;border-radius:10px;border:1px solid #ddd;">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Product Code</label>
+                            <input type="text" name="product_code" id="edit_code" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Price</label>
+                            <input type="number" name="price" id="edit_price" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Category</label>
+                            <input type="text" name="category" id="edit_category" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Description</label>
+                            <textarea name="description" id="edit_description" class="form-control" rows="4"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-custom" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="btn btn-orange-primary">
+                        <i class="bi bi-check-circle"></i> Update Product
+                    </button>
+                </div>
+
+            </form>
+
         </div>
     </div>
 </div>
@@ -459,31 +539,61 @@
     });
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
 
-    const deleteButtons = document.querySelectorAll('.delete-product-btn');
+        const deleteButtons = document.querySelectorAll('.delete-product-btn');
 
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', function () {
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
 
-            const productCode = this.getAttribute('data-code');
+                const productCode = this.getAttribute('data-code');
 
-            document.getElementById('deleteProductCode').innerText = productCode;
+                document.getElementById('deleteProductCode').innerText = productCode;
 
-            // ✅ IMPORTANT FIX: correct Laravel route
-            const baseUrl = "{{ url('admin/product') }}";
+                // ✅ IMPORTANT FIX: correct Laravel route
+                const baseUrl = "{{ url('admin/product') }}";
 
-            document.getElementById('deleteForm').action =
-                baseUrl + '/' + productCode;
+                document.getElementById('deleteForm').action =
+                    baseUrl + '/' + productCode;
 
-            const deleteModal = new bootstrap.Modal(
-                document.getElementById('deleteModal')
-            );
+                const deleteModal = new bootstrap.Modal(
+                    document.getElementById('deleteModal')
+                );
 
-            deleteModal.show();
+                deleteModal.show();
+            });
         });
-    });
 
-});
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        const editButtons = document.querySelectorAll('.edit-product-btn');
+
+        editButtons.forEach(button => {
+            button.addEventListener('click', function() {
+
+                const id = this.getAttribute('data-id');
+                const code = this.getAttribute('data-code');
+                const price = this.getAttribute('data-price');
+                const category = this.getAttribute('data-category');
+                const description = this.getAttribute('data-description');
+                const img = this.getAttribute('data-img');
+
+                document.getElementById('edit_code').value = code;
+                document.getElementById('edit_price').value = price;
+                document.getElementById('edit_category').value = category;
+                document.getElementById('edit_description').value = description;
+
+                // show current image
+                document.getElementById('current_image').src = img;
+
+                // form action
+                document.getElementById('editForm').action = "/admin/product/update/" + id;
+            });
+        });
+
+    });
 </script>
 @endsection
