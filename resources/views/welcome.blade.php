@@ -440,7 +440,7 @@
     <!-- About Section -->
     <section class="about-section">
 
-        <div class="container">
+        <div class="container" id="about">
 
             <div class="row align-items-center g-5">
 
@@ -519,7 +519,7 @@
     <!-- Footer Start -->
     <!-- Footer Start -->
     <footer class="footer-main pt-5 pb-3">
-        <div class="container">
+        <div class="container" id="contact">
             <div class="row g-4">
 
                 <!-- Brand & About -->
@@ -533,9 +533,9 @@
                     </p>
                     <!-- Social Icons -->
                     <div class="social-icons mt-3">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/horanawasana?rdid=eJthX9nNmE2HlClT&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BVHn3G3a8%2F#"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/wasana_online_store/?next=%2F"><i class="bi bi-instagram"></i></a>
+                        <a href="#" onclick="openWhatsApp()"><i class="bi bi-whatsapp"></i></a>
                     </div>
                 </div>
 
@@ -544,9 +544,9 @@
                     <h5 class="footer-title">Quick Links</h5>
                     <ul class="footer-links">
                         <li><a href="#">Home</a></li>
-                        <li><a href="{{ url('/products') }}">Products</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="{{ url('/all-products') }}">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#about">About</a></li>
                     </ul>
                 </div>
 
@@ -569,7 +569,7 @@
                             <p class="footer-text mb-2">
                                 <i class="bi bi-geo-alt-fill text-orange me-2"></i> No. 18, Wasana Bakers Factory,<br> Kandana,Horana <br> Sri lanka. <br>
                                 <i class="bi bi-telephone-fill text-orange me-2"></i> 034 22 50 600 <br>
-                                <i class="bi bi-envelope-fill text-orange me-2"></i> wasanadelivery@gmail.com
+                                <i class="bi bi-envelope-fill text-orange me-2"></i> <a href="mailto:wasanadelivery@gmail.com">wasanadelivery@gmail.com</a>
                             </p>
                         </div>
                         <!-- Modern Google Map Embed -->
@@ -674,16 +674,42 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Target elements matching critical performance pipelines
+
             const loaderElement = document.getElementById("globalPageLoader");
 
-            // Adds a micro-delay structure to ensure progress bar completes flawlessly
-            setTimeout(() => {
-                if (loaderElement) {
+            if (!loaderElement) return;
+
+            // Home page first load only
+            if (sessionStorage.getItem("wasana_home_loaded")) {
+
+                loaderElement.style.display = "none";
+
+            } else {
+
+                sessionStorage.setItem("wasana_home_loaded", "true");
+
+                setTimeout(() => {
                     loaderElement.classList.add("fade-out");
-                }
-            }, 2600); // 2.6 seconds delay mapping beautifully with CSS animation metrics
+
+                    setTimeout(() => {
+                        loaderElement.style.display = "none";
+                    }, 600);
+
+                }, 2600);
+
+            }
+
         });
+    </script>
+    <script>
+        // මෙතනත් 'fnction' එක 'function' ලෙස නිවැරදි කලා
+        function openWhatsApp() {
+            let phone = "94711500900";
+            let url = window.location.href;
+            //let message = "Hi, I am interested in this product: \n" + url;
+            let whatsappURL = "https://wa.me/" + phone + "?text=" + encodeURIComponent();
+            window.open(whatsappURL, "_blank");
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
