@@ -25,7 +25,7 @@
         <div class="container-fluid px-4">
 
             <!-- Logo + Brand -->
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                 <img src="{{ asset('images/nav-logo.png') }}" alt="logo" class="logo">
                 <div class="ms-2">
                     <h5 class="mb-0">Wasana Bakers</h5>
