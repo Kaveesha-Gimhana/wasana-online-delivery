@@ -102,7 +102,7 @@
                             {{ $product->product_code }}
                         </h2>
 
-                        <h3 class="wb-product-price">
+                        <h3 class="wb-product-price" id="productPrice">
                             Rs. {{ number_format($product->price, 2) }}
                         </h3>
 
@@ -111,11 +111,14 @@
                                 Select Option
                             </label>
 
-                            <select class="form-select wb-product-select">
-                                <option selected>Choose Cake Type</option>
-                                <option>Chocolate</option>
-                                <option>Ribbon</option>
-                                <option>Vanilla</option>
+                            <select class="form-select wb-product-select" id="cakeOption">
+                                <option value="0">Choose Cake Type</option>
+                                <option value="100">Chocolate</option>
+                                <option value="100">Ribbon</option>
+                                <option value="">Butter</option>
+                                <option value="200">Butter mid Icing</option>
+                                <option value="200">Chocolate mid Icing</option>
+                                <option value="200">Ribbon mid Icing</option>
                             </select>
                         </div>
 
@@ -262,7 +265,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
-    
+
     <script>
         let qty = 1;
 
@@ -280,7 +283,7 @@
             }
         }
     </script>
-    
+
     <script>
         // මෙතනත් 'fnction' එක 'function' ලෙස නිවැරදි කලා
         function openWhatsApp() {
@@ -291,6 +294,19 @@
             window.open(whatsappURL, "_blank");
         }
     </script>
+    <script>
+    const basePrice = Number("{{ $product->price }}");
+
+    document.getElementById('cakeOption').addEventListener('change', function () {
+
+        let extraPrice = parseInt(this.value) || 0;
+
+        let finalPrice = basePrice + extraPrice;
+
+        document.getElementById('productPrice').innerHTML =
+            'Rs. ' + finalPrice.toFixed(2);
+    });
+</script>
 </body>
 
 </html>
