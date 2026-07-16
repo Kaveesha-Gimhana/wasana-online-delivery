@@ -63,4 +63,46 @@ class ProductController extends Controller
 
     return redirect()->back()->with('success', 'Product deleted successfully');
 }
+public function edit($product_code){
+    $product = products::where('product_code', $product_code)->firstOrFail();
+    return view('controller-page.product-update', compact('product'));
+}
+
+public function update(Request $request, $product_code){
+    $product = products::where('product_code', $product_code)->firstOrFail();
+
+    $request->validate([
+        'price' => 'required|integer',
+        'category' => 'required',
+        'description' => 'required',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048'
+    ]);
+
+    if ($request->hasFile('image')) {
+
+        if ($product->image && file_exists(public_path('uploads/products/'.$product->image))) {
+            unlink(public_path('uploads/products/'.$product->image));
+        }
+
+        $imageName = time().'.'.$request->image->extension();
+
+        $request->image->move(
+            public_path('uploads/products'),
+            $imageName
+        );
+
+        $product->image = $imageName;
+    }
+
+    $product->price = $request->price;
+    $product->category = $request->category;
+    $product->description = $request->description;
+
+    $product->save();
+    
+
+    return redirect()->route('admin.product')
+        ->with('success','Product Updated Successfully');
+}
+
 }

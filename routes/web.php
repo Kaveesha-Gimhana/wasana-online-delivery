@@ -79,6 +79,12 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::delete('/product/{product_code}', [ProductController::class, 'destroy'])
     ->name('product.destroy');
 
+    Route::get('/product/edit/{product_code}', [ProductController::class, 'edit'])
+    ->name('product.edit');
+
+    Route::put('/product/update/{product_code}', [ProductController::class, 'update'])
+    ->name('product.update');
+
 });
 
 

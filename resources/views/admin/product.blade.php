@@ -371,11 +371,15 @@
     </div>
 </div>
 
+<!-- Update Model pop-up Section start-->
 <div class="modal fade modern-modal" id="editProductModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
 
-            <form id="editForm" method="POST">
+            <form id="editForm"
+                action=""
+                method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -404,7 +408,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label">Product Code</label>
-                            <input type="text" name="product_code" id="edit_code" class="form-control" required>
+                            <input type="text" name="product_code" id="edit_code" class="form-control" readonly>
                         </div>
 
                         <div class="col-md-6">
@@ -429,9 +433,9 @@
                     <button type="button" class="btn btn-outline-custom" data-bs-dismiss="modal">
                         Cancel
                     </button>
-
                     <button type="submit" class="btn btn-orange-primary">
-                        <i class="bi bi-check-circle"></i> Update Product
+                        <i class="bi bi-check-circle"></i>
+                        Update Product
                     </button>
                 </div>
 
@@ -440,6 +444,7 @@
         </div>
     </div>
 </div>
+<!-- Update Model pop-up Section End -->
 <!-- Delete Confirmation Modal -->
 <div class="modal fade modern-modal" id="deleteModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -572,28 +577,47 @@
         const editButtons = document.querySelectorAll('.edit-product-btn');
 
         editButtons.forEach(button => {
+
             button.addEventListener('click', function() {
 
-                const id = this.getAttribute('data-id');
-                const code = this.getAttribute('data-code');
-                const price = this.getAttribute('data-price');
-                const category = this.getAttribute('data-category');
-                const description = this.getAttribute('data-description');
-                const img = this.getAttribute('data-img');
+                const code = this.dataset.code;
+                const price = this.dataset.price;
+                const category = this.dataset.category;
+                const description = this.dataset.description;
+                const img = this.dataset.img;
 
                 document.getElementById('edit_code').value = code;
                 document.getElementById('edit_price').value = price;
                 document.getElementById('edit_category').value = category;
                 document.getElementById('edit_description').value = description;
-
-                // show current image
                 document.getElementById('current_image').src = img;
 
-                // form action
-                document.getElementById('editForm').action = "/admin/product/update/" + id;
+                document.getElementById('editForm').action =
+                    "/admin/product/update/" + code;
+
             });
+
         });
 
     });
+</script>
+<script>
+    const imageInput = document.getElementById('edit_image');
+const previewImage = document.getElementById('current_image');
+
+imageInput.addEventListener('change', function () {
+
+    if (this.files && this.files[0]) {
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            previewImage.src = e.target.result;
+        };
+
+        reader.readAsDataURL(this.files[0]);
+    }
+
+});
 </script>
 @endsection
