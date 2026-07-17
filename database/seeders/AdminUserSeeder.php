@@ -36,5 +36,14 @@ class AdminUserSeeder extends Seeder
                 'role' => 'admin'
             ]
         );
+        User::updateOrCreate(
+            ['email' => 'hansani2004wasanabakers@gmail.com'],
+            [
+                'name' => 'Hansani',
+                'password' => Hash::make('Hansani@2004'),
+                'role' => 'admin'
+            ]
+        );
+
     }
 }
