@@ -256,72 +256,7 @@
 
     </div>
     <!-- Premium Loader Component End -->
-    <!-- Navbar Section Start -->
-    <nav class="navbar navbar-expand-lg custom-navbar sticky-top">
-        <div class="container-fluid px-4">
-
-            <!-- Logo + Brand -->
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="{{ asset('images/nav-logo.png') }}" alt="logo" class="logo">
-                <div class="ms-2">
-                    <h5 class="mb-0">Wasana Bakers</h5>
-                    <small>Online Cake Delivery</small>
-                </div>
-            </a>
-
-            <!-- Toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                ☰
-            </button>
-
-            <!-- Menu -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/all-products') }}">Products</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
-
-                    <li class="nav-item ms-3">
-                        <a class="btn order-btn" href="{{ url('/all-products') }}">Order Now</a>
-                    </li>
-
-                    <li class="nav-item ms-3">
-                        <button class="btn nav-btn-login">
-                            <i class="bi bi-person-circle"></i> Log In
-                        </button>
-                    </li>
-
-                    <li class="nav-item ms-3">
-                        <!-- <button class="btn position-relative nav-cart-btn">
-                        <i class="bi bi-cart4"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-                            99+
-                        </span>
-                    </button> -->
-                        <button class="btn position-relative nav-cart-btn" id="cartBtn">
-                            <i class="bi bi-cart4"></i>
-
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-                                3
-                            </span>
-                        </button>
-                    </li>
-
-                </ul>
-            </div>
-
-        </div>
-    </nav>
-    <!-- Navbar Section End -->
+    @include('layouts.navbar')
     <!-- Carosel Section Start -->
     <div class="container-fluid carosel-main pt-5 pb-5">
         <div class="row">
@@ -357,7 +292,7 @@
                         <div class="card-body text-center">
                             <h5>Birthday Cake</h5>
                             <p>Delicious fresh chocolate cake.</p>
-                            <button class="btn card-slider-btn">Order Now</button>
+                            <a href="{{ url('/all-products') }}" class="btn card-slider-btn">Order Now</a>
                         </div>
                     </div>
 
@@ -367,7 +302,7 @@
                         <div class="card-body text-center">
                             <h5>Anniversary Cake</h5>
                             <p>Soft and creamy vanilla flavor.</p>
-                            <button class="btn card-slider-btn">Order Now</button>
+                            <a href="{{ url('/all-products') }}" class="btn card-slider-btn">Order Now</a>
                         </div>
                     </div>
 
@@ -387,7 +322,7 @@
                         <div class="card-body text-center">
                             <h5>Christmas Cake</h5>
                             <p>Special festive cake.</p>
-                            <button class="btn card-slider-btn">Order Now</button>
+                            <a href="{{ url('all-products') }}" class="card-slider-btn">Order Now</a>
                         </div>
                     </div>
 
@@ -397,7 +332,7 @@
                         <div class="card-body text-center">
                             <h5>Gateau Cake</h5>
                             <p>Premium layered cake.</p>
-                            <button class="btn card-slider-btn">Order Now</button>
+                            <a href="{{ url('/all-products') }}" class="card-slider-btn">Order Now</a>
                         </div>
                     </div>
 
@@ -407,7 +342,7 @@
                         <div class="card-body text-center">
                             <h5>Bento Cake</h5>
                             <p>Mini cute cake.</p>
-                            <button class="btn card-slider-btn">Order Now</button>
+                            <a href="{{ url('/all-products') }}" class="card-slider-btn">Order Now</a>
                         </div>
                     </div>
 
@@ -517,89 +452,7 @@
     </section>
     <!-- About Section End -->
     <!-- Footer Start -->
-    <!-- Footer Start -->
-    <footer class="footer-main pt-5 pb-3">
-        <div class="container" id="contact">
-            <div class="row g-4">
-
-                <!-- Brand & About -->
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="footer-logo">Wasana Bakers</h4>
-                    <p class="footer-text">
-                        Horana Wasana Bakery, founded in 1995 by Mr. Dayananda Bobuwala and
-                        Mrs. Anusha Wijayanthi Perera in Govinna, Ratiala, is rooted in the founders’
-                        strong connection to Horana. Today, it continues its tradition of
-                        quality while offering convenient online delivery.
-                    </p>
-                    <!-- Social Icons -->
-                    <div class="social-icons mt-3">
-                        <a href="https://www.facebook.com/horanawasana?rdid=eJthX9nNmE2HlClT&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BVHn3G3a8%2F#"><i class="bi bi-facebook"></i></a>
-                        <a href="https://www.instagram.com/wasana_online_store/?next=%2F"><i class="bi bi-instagram"></i></a>
-                        <a href="#" onclick="openWhatsApp()"><i class="bi bi-whatsapp"></i></a>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="col-lg-2 col-md-6 ps-lg-4">
-                    <h5 class="footer-title">Quick Links</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="{{ url('/all-products') }}">Products</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#about">About</a></li>
-                    </ul>
-                </div>
-
-                <!-- Support -->
-                <div class="col-lg-2 col-md-6">
-                    <h5 class="footer-title">Support</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Delivery Info</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact Info & Map -->
-                <div class="col-lg-5 col-md-6">
-                    <h5 class="footer-title">Find Us</h5>
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <p class="footer-text mb-2">
-                                <i class="bi bi-geo-alt-fill text-orange me-2"></i> No. 18, Wasana Bakers Factory,<br> Kandana,Horana <br> Sri lanka. <br>
-                                <i class="bi bi-telephone-fill text-orange me-2"></i> 034 22 50 600 <br>
-                                <i class="bi bi-envelope-fill text-orange me-2"></i> <a href="mailto:wasanadelivery@gmail.com">wasanadelivery@gmail.com</a>
-                            </p>
-                        </div>
-                        <!-- Modern Google Map Embed -->
-                        <div class="col-12">
-                            <div class="footer-map-container">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.5749004025915!2d80.0900809!3d6.6910419999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3b50b2b6888d5%3A0x2c24ea9de840a24c!2sWasana%20Bakers%20(Pvt)%20Ltd%20-%20Head%20Office!5e1!3m2!1sen!2ssg!4v1781520383342!5m2!1sen!2ssg"
-                                    width="100%"
-                                    height="150"
-                                    style="border:0;"
-                                    allowfullscreen=""
-                                    loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <hr class="footer-line">
-
-            <div class="text-center footer-bottom">
-                © 2026 Wasana Bakers | All Rights Reserved
-            </div>
-
-        </div>
-    </footer>
-    <!-- Footer End -->
+    @include('layouts.footer')
     <!-- Footer End -->
 
 
