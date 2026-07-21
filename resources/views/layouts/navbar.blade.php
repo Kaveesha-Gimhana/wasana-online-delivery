@@ -37,9 +37,12 @@
                     </li>
 
                     <li class="nav-item ms-3">
-                        <button class="btn nav-btn-login">
+                        <!-- <button class="btn nav-btn-login">
                             <i class="bi bi-person-circle"></i> Log In
-                        </button>
+                        </button> -->
+                        <a class="btn nav-btn-login" href="{{ url('/login') }}">
+                            <i class="bi bi-person-circle"></i> Login
+                        </a>
                     </li>
 
                     <li class="nav-item ms-3">
