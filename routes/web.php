@@ -14,6 +14,10 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('welcome');
 });
+//Login form test
+Route::get('/login',function(){
+    return view('auth.login');
+});
 
 /* Route::get('/all-products', function () {
     return view('allProduct');
