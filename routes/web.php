@@ -18,6 +18,10 @@ Route::get('/', function () {
 Route::get('/login',function(){
     return view('auth.login');
 });
+//sign in form test
+Route::get('/signin',function(){
+    return view('auth.signin');
+});
 
 /* Route::get('/all-products', function () {
     return view('allProduct');

@@ -44,7 +44,7 @@
                 <a href="{{ url('/') }}" class="btn login-back-btn w-100 mt-1 mb-3"> Back </a>
 
                 <p>Don't have an account ? |
-                    <a href="" class="login-link">Register Now</a>    
+                    <a href="{{ url('/signin') }}" class="login-link">Register Now</a>    
                 </p>
             </div>
         </div>
